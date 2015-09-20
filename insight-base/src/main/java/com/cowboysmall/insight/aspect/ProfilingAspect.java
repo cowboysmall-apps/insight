@@ -38,7 +38,7 @@ public class ProfilingAspect {
                     profilable.value(),
                     proceedingJoinPoint.getTarget().getClass(),
                     String.format(
-                            "[ time taken to execute < %s > = %s ]",
+                            "[ time taken to execute < %s > = %sms ]",
                             proceedingJoinPoint.getSignature().getName(),
                             (end - start)
                     )

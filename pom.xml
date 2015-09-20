@@ -9,7 +9,7 @@
     <groupId>com.cowboysmall</groupId>
     <artifactId>insight</artifactId>
     <name>insight</name>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
 
     <packaging>pom</packaging>
@@ -57,7 +57,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.2.5.RELEASE</version>
+                <version>1.2.6.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

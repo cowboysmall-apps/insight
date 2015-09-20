@@ -8,13 +8,13 @@
 
     <artifactId>insight-log4j</artifactId>
     <name>insight-log4j</name>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
 
     <parent>
         <groupId>com.cowboysmall</groupId>
         <artifactId>insight</artifactId>
-        <version>0.0.2</version>
+        <version>0.0.3</version>
     </parent>
 
 
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.cowboysmall</groupId>
             <artifactId>insight-base</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.3</version>
         </dependency>
 
         <dependency>
