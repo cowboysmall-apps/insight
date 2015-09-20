@@ -1,5 +1,7 @@
 package com.cowboysmall.insight.sample.job;
 
+import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.sample.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,6 +21,7 @@ public class SampleJob {
     //_________________________________________________________________________
 
     @Scheduled(cron = "*/5 * * * * *")
+    @Loggable(LogLevel.INFO)
     public void execute() {
 
         sampleService.scheduled();

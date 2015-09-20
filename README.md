@@ -89,6 +89,23 @@ A sample application is provided to demonstrate usage in a Spring Boot context. 
 
 `
 
+once built, either execute the following through maven:
+
+`
+
+        mvn spring-boot:run
+
+`
+
+or execute the following:
+
+`
+
+        java -jar insight-sample/target/insight-sample-0.0.1.jar
+
+`
+
+
 Bugs and Feature Requests
 -------------------------
 
@@ -98,7 +115,7 @@ Please submit all bugs and feature requests [here](https://github.com/cowboysmal
 Author
 ------
 
-_Jerry Kiely_
+__Jerry Kiely__
 - [github](https://github.com/cowboysmall)
 - [linkedin](https://www.linkedin.com/in/cowboysmall)
 
