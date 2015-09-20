@@ -8,13 +8,13 @@
 
     <artifactId>insight-base</artifactId>
     <name>insight-base</name>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
 
     <parent>
         <groupId>com.cowboysmall</groupId>
         <artifactId>insight</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
     </parent>
 
 
@@ -23,11 +23,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
         </dependency>
 
     </dependencies>

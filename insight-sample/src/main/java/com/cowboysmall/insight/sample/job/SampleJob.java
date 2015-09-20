@@ -24,6 +24,6 @@ public class SampleJob {
     @Loggable(LogLevel.INFO)
     public void execute() {
 
-        sampleService.scheduled();
+        sampleService.scheduled("one", 2l);
     }
 }

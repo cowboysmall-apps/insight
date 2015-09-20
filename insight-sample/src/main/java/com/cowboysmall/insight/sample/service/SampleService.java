@@ -6,9 +6,9 @@ package com.cowboysmall.insight.sample.service;
  */
 public interface SampleService {
 
-    String logging();
+    String logging(String value1, Long value2);
 
-    String profiling();
+    String profiling(String value1, Long value2);
 
-    void scheduled();
+    void scheduled(String value1, Long value2);
 }

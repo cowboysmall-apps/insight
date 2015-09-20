@@ -14,7 +14,7 @@ public class SampleServiceImpl implements SampleService {
 
     @Override
     @Loggable(LogLevel.INFO)
-    public String logging() {
+    public String logging(String value1, Long value2) {
 
         try {
 
@@ -29,7 +29,7 @@ public class SampleServiceImpl implements SampleService {
 
     @Override
     @Profilable(LogLevel.INFO)
-    public String profiling() {
+    public String profiling(String value1, Long value2) {
 
         try {
 
@@ -44,7 +44,7 @@ public class SampleServiceImpl implements SampleService {
 
     @Override
     @Profilable(LogLevel.INFO)
-    public void scheduled() {
+    public void scheduled(String value1, Long value2) {
 
         try {
 

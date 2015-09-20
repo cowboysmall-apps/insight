@@ -27,7 +27,7 @@ public class SampleController {
     @Loggable(LogLevel.INFO)
     public String logging() {
 
-        return sampleService.logging();
+        return sampleService.logging("one", 2l);
     }
 
     @RequestMapping("/profiling")
@@ -35,6 +35,6 @@ public class SampleController {
     @Profilable(LogLevel.INFO)
     public String profiling() {
 
-        return sampleService.profiling();
+        return sampleService.profiling("one", 2l);
     }
 }
