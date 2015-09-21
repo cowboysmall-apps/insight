@@ -6,6 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 
+    <groupId>com.cowboysmall.insight</groupId>
     <artifactId>insight-base</artifactId>
     <name>insight-base</name>
     <version>0.0.4</version>
