@@ -7,7 +7,7 @@ A simple tool for logging and profiling objects managed within a Spring containe
 Usage
 -----
 
-Simpley include a dependency for the version you want to use in your maven pom:
+Simply include a dependency for the version you want to use in your maven pom:
 
 ```xml
 
