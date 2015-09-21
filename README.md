@@ -1,6 +1,8 @@
 Insight
 =======
 
+[![Circle CI](https://circleci.com/gh/cowboysmall/insight.svg?style=svg)](https://circleci.com/gh/cowboysmall/insight)
+
 A simple tool for logging and profiling objects managed within a Spring container.
 
 
