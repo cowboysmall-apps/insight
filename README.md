@@ -67,25 +67,27 @@ A sample application is provided to demonstrate usage in a Spring Boot context. 
 
 `
 
-    ├── pom.xml
-    └── src
-        └── main
-            ├── java
-            │   └── com
-            │       └── cowboysmall
-            │           └── insight
-            │               └── sample
-            │                   ├── job
-            │                   │   └── SampleJob.java
-            │                   ├── SampleApplication.java
-            │                   ├── service
-            │                   │   ├── SampleServiceException.java
-            │                   │   ├── SampleServiceImpl.java
-            │                   │   └── SampleService.java
-            │                   └── web
-            │                       └── SampleController.java
-            └── resources
-                └── logback.xml
+        ├── pom.xml
+        └── src
+            └── main
+                ├── java
+                │   └── com
+                │       └── cowboysmall
+                │           └── insight
+                │               └── sample
+                │                   ├── job
+                │                   │   └── SampleJob.java
+                │                   ├── SampleApplication.java
+                │                   ├── service
+                │                   │   ├── impl
+                │                   │   │   └── SampleServiceImpl.java
+                │                   │   ├── SampleServiceException.java
+                │                   │   └── SampleService.java
+                │                   └── web
+                │                       └── SampleController.java
+                └── resources
+                    ├── banner.txt
+                    └── logback.xml
 
 `
 
@@ -101,7 +103,7 @@ or execute the following:
 
 `
 
-        java -jar insight-sample/target/insight-sample-0.0.1.jar
+        java -jar insight-sample/target/insight-sample-0.0.6.jar
 
 `
 

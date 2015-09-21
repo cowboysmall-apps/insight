@@ -1,8 +1,10 @@
-package com.cowboysmall.insight.sample.service;
+package com.cowboysmall.insight.sample.service.impl;
 
 import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Profilable;
+import com.cowboysmall.insight.sample.service.SampleService;
+import com.cowboysmall.insight.sample.service.SampleServiceException;
 import org.springframework.stereotype.Component;
 
 /**
