@@ -8,13 +8,13 @@
 
     <artifactId>insight-logback</artifactId>
     <name>insight-logback</name>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
 
 
     <parent>
         <groupId>com.cowboysmall.insight</groupId>
         <artifactId>insight</artifactId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
 
 
