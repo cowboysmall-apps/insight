@@ -12,9 +12,9 @@ Simply include a dependency for the version you want to use in your maven pom:
 ```xml
 
         <dependency>
-            <groupId>com.cowboysmall</groupId>
+            <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.6</version>
         </dependency>
 
 ```
@@ -24,7 +24,7 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile group: 'com.cowboysmall', name: 'insight-logback', version: '0.0.1'
+        compile group: 'com.cowboysmall.insight', name: 'insight-logback', version: '0.0.6'
 
 ```
 
@@ -33,7 +33,7 @@ then let your application know to use the aspects:
 ```java
 
         @SpringBootApplication
-        @ComponentScan(basePackages = {"com.cowboysmall.insight"})
+        @ComponentScan(basePackages = {"com.cowboysmall.insight", "..."})
         @EnableAspectJAutoProxy
         public class MyApplication {
 
