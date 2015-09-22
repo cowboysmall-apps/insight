@@ -162,7 +162,7 @@ public class LoggingAspectTest {
         }
 
         assertEquals(4, messageService.getMessageList().size());
-        assertEquals(2, messageService.getExceptionList().size());
+        assertEquals(1, messageService.getExceptionList().size());
 
         assertEquals(
                 "[ entering < callDelegateThrowsCheckedException > with args [something] ]",
@@ -191,7 +191,7 @@ public class LoggingAspectTest {
         }
 
         assertEquals(4, messageService.getMessageList().size());
-        assertEquals(2, messageService.getExceptionList().size());
+        assertEquals(1, messageService.getExceptionList().size());
 
         assertEquals(
                 "[ entering < callDelegateThrowsUncheckedException > with args [something] ]",

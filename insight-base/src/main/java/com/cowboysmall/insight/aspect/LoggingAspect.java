@@ -49,7 +49,8 @@ public class LoggingAspect {
     @AfterThrowing(value = "@annotation(insightLogging)", throwing = "throwable", argNames = "joinPoint, insightLogging, throwable")
     public void afterThrowing(JoinPoint joinPoint, Loggable loggable, Throwable throwable) {
 
-        if (!exceptions.contains(throwable))
+        if (!exceptions.contains(throwable) && !exceptions.contains(throwable.getCause())) {
+
             messageService.message(
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
@@ -61,7 +62,10 @@ public class LoggingAspect {
                     ),
                     throwable
             );
-        else
+            exceptions.add(throwable);
+
+        } else {
+
             messageService.message(
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
@@ -72,6 +76,7 @@ public class LoggingAspect {
                             throwable.getMessage()
                     )
             );
+        }
     }
 
     @AfterReturning(value = "@annotation(insightLogging)", returning = "returnValue", argNames = "joinPoint, insightLogging, returnValue")
