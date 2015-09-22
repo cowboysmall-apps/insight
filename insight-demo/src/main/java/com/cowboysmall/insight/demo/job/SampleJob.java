@@ -1,8 +1,8 @@
-package com.cowboysmall.insight.sample.job;
+package com.cowboysmall.insight.demo.job;
 
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Loggable;
-import com.cowboysmall.insight.sample.service.SampleService;
+import com.cowboysmall.insight.demo.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

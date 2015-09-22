@@ -1,4 +1,4 @@
-package com.cowboysmall.insight.sample;
+package com.cowboysmall.insight.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,10 +14,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {"com.cowboysmall.insight"})
 @EnableAspectJAutoProxy
 @EnableScheduling
-public class SampleApplication {
+public class DemoApplication {
 
     public static void main(String[] args) throws Exception {
 
-        SpringApplication.run(SampleApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
     }
 }

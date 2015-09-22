@@ -1,4 +1,4 @@
-package com.cowboysmall.insight.sample.service;
+package com.cowboysmall.insight.demo.service;
 
 /**
  * jerry

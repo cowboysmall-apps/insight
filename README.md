@@ -105,7 +105,33 @@ or execute the following:
 
 `
 
-        java -jar insight-sample/target/insight-sample-0.0.6.jar
+        java -jar insight-demo/target/insight-demo-0.0.6.jar
+
+`
+
+and you will see something like the following:
+
+`
+
+          ___         _      _   _     ___
+         |_ _|_ _  __(_)__ _| |_| |_  |   \ ___ _ __  ___
+          | || ' \(_-< / _` | ' \  _| | |) / -_) '  \/ _ \
+         |___|_||_/__/_\__, |_||_\__| |___/\___|_|_|_\___/
+                       |___/
+
+         :: Insight Demo :: Spring Boot  (v1.2.6.RELEASE)
+
+
+        23:17:00.002 [pool-1-thread-1] INFO  c.c.insight.sample.job.SampleJob - [ entering < execute > with args [] ]
+        23:17:00.782 [pool-1-thread-1] INFO  c.c.i.s.s.impl.SampleServiceImpl - [ time taken to execute < scheduled > = 779ms ]
+        23:17:00.783 [pool-1-thread-1] INFO  c.c.insight.sample.job.SampleJob - [ leaving < execute > returning null ]
+        23:17:03.206 [qtp87581093-15] INFO  c.c.i.sample.web.SampleController - [ entering < logging > with args [] ]
+        23:17:03.221 [qtp87581093-15] INFO  c.c.i.s.s.impl.SampleServiceImpl - [ entering < logging > with args [one, 2] ]
+        23:17:04.021 [qtp87581093-15] INFO  c.c.i.s.s.impl.SampleServiceImpl - [ leaving < logging > returning Test Logging... ]
+        23:17:04.022 [qtp87581093-15] INFO  c.c.i.sample.web.SampleController - [ leaving < logging > returning Test Logging... ]
+        23:17:05.001 [pool-1-thread-1] INFO  c.c.insight.sample.job.SampleJob - [ entering < execute > with args [] ]
+        23:17:05.510 [pool-1-thread-1] INFO  c.c.i.s.s.impl.SampleServiceImpl - [ time taken to execute < scheduled > = 508ms ]
+        23:17:05.511 [pool-1-thread-1] INFO  c.c.insight.sample.job.SampleJob - [ leaving < execute > returning null ]
 
 `
 

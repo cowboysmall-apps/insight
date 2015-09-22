@@ -98,7 +98,7 @@
         <module>insight-jdk14</module>
         <module>insight-log4j</module>
         <module>insight-logback</module>
-        <module>insight-sample</module>
+        <module>insight-demo</module>
     </modules>
 
 

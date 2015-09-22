@@ -1,9 +1,9 @@
-package com.cowboysmall.insight.sample.web;
+package com.cowboysmall.insight.demo.web;
 
 import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Profilable;
-import com.cowboysmall.insight.sample.service.SampleService;
+import com.cowboysmall.insight.demo.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
