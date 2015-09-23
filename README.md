@@ -123,14 +123,14 @@ and you will see something like the following:
 
 
         23:17:00.002 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ entering < execute > with args [] ]
-        23:17:00.782 [pool-1-thread-1] INFO  c.c.i.s.s.impl.DemoServiceImpl - [ time taken to execute < scheduled > = 779ms ]
+        23:17:00.782 [pool-1-thread-1] INFO  c.c.i.d.s.impl.DemoServiceImpl - [ time taken to execute < scheduled > = 779ms ]
         23:17:00.783 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ leaving < execute > returning null ]
         23:17:03.206 [qtp87581093-15] INFO  c.c.i.demo.web.DemoController - [ entering < logging > with args [] ]
-        23:17:03.221 [qtp87581093-15] INFO  c.c.i.s.s.impl.DemoServiceImpl - [ entering < logging > with args [one, 2] ]
-        23:17:04.021 [qtp87581093-15] INFO  c.c.i.s.s.impl.DemoServiceImpl - [ leaving < logging > returning Test Logging... ]
+        23:17:03.221 [qtp87581093-15] INFO  c.c.i.d.s.impl.DemoServiceImpl - [ entering < logging > with args [one, 2] ]
+        23:17:04.021 [qtp87581093-15] INFO  c.c.i.d.s.impl.DemoServiceImpl - [ leaving < logging > returning Test Logging... ]
         23:17:04.022 [qtp87581093-15] INFO  c.c.i.demo.web.DemoController - [ leaving < logging > returning Test Logging... ]
         23:17:05.001 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ entering < execute > with args [] ]
-        23:17:05.510 [pool-1-thread-1] INFO  c.c.i.s.s.impl.DemoServiceImpl - [ time taken to execute < scheduled > = 508ms ]
+        23:17:05.510 [pool-1-thread-1] INFO  c.c.i.d.s.impl.DemoServiceImpl - [ time taken to execute < scheduled > = 508ms ]
         23:17:05.511 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ leaving < execute > returning null ]
 
 `
