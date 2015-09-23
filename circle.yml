@@ -4,5 +4,9 @@ machine:
     version: oraclejdk8
 
 dependencies:
- override:
-  - mvn clean install -DskipTests
+  override:
+    - mvn clean install -DskipTests
+
+test:
+  post:
+    - bash <(curl -s https://codecov.io/bash)
