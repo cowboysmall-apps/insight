@@ -3,8 +3,8 @@ package com.cowboysmall.insight.demo.service.impl;
 import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Profilable;
-import com.cowboysmall.insight.demo.service.SampleService;
-import com.cowboysmall.insight.demo.service.SampleServiceException;
+import com.cowboysmall.insight.demo.service.DemoService;
+import com.cowboysmall.insight.demo.service.DemoServiceException;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SampleServiceImpl implements SampleService {
+public class DemoServiceImpl implements DemoService {
 
     @Override
     @Loggable(LogLevel.INFO)
@@ -25,7 +25,7 @@ public class SampleServiceImpl implements SampleService {
 
         } catch (Exception e) {
 
-            throw new SampleServiceException(e);
+            throw new DemoServiceException(e);
         }
     }
 
@@ -40,7 +40,7 @@ public class SampleServiceImpl implements SampleService {
 
         } catch (Exception e) {
 
-            throw new SampleServiceException(e);
+            throw new DemoServiceException(e);
         }
     }
 
@@ -54,7 +54,7 @@ public class SampleServiceImpl implements SampleService {
 
         } catch (Exception e) {
 
-            throw new SampleServiceException(e);
+            throw new DemoServiceException(e);
         }
     }
 }

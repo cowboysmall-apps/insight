@@ -3,7 +3,7 @@ package com.cowboysmall.insight.demo.web;
 import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Profilable;
-import com.cowboysmall.insight.demo.service.SampleService;
+import com.cowboysmall.insight.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-public class SampleController {
+public class DemoController {
 
     @Autowired
-    private SampleService sampleService;
+    private DemoService demoService;
 
 
     //_________________________________________________________________________
@@ -27,7 +27,7 @@ public class SampleController {
     @Loggable(LogLevel.INFO)
     public String logging() {
 
-        return sampleService.logging("one", 2l);
+        return demoService.logging("one", 2l);
     }
 
     @RequestMapping("/profiling")
@@ -35,6 +35,6 @@ public class SampleController {
     @Profilable(LogLevel.INFO)
     public String profiling() {
 
-        return sampleService.profiling("one", 2l);
+        return demoService.profiling("one", 2l);
     }
 }

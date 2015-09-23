@@ -2,7 +2,7 @@ package com.cowboysmall.insight.demo.job;
 
 import com.cowboysmall.insight.LogLevel;
 import com.cowboysmall.insight.Loggable;
-import com.cowboysmall.insight.demo.service.SampleService;
+import com.cowboysmall.insight.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class SampleJob {
+public class DemoJob {
 
     @Autowired
-    private SampleService sampleService;
+    private DemoService demoService;
 
 
     //_________________________________________________________________________
@@ -24,6 +24,6 @@ public class SampleJob {
     @Loggable(LogLevel.INFO)
     public void execute() {
 
-        sampleService.scheduled("one", 2l);
+        demoService.scheduled("one", 2l);
     }
 }
