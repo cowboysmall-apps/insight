@@ -1,6 +1,7 @@
 package com.cowboysmall.insight.service.impl;
 
 import com.cowboysmall.insight.service.LoggerService;
+import com.cowboysmall.insight.service.LoggerServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -23,9 +24,16 @@ public class LoggerServiceImpl implements LoggerService {
     @Override
     public Logger getLogger(Class<?> clazz) {
 
-        if (!loggers.containsKey(clazz))
-            loggers.put(clazz, LoggerFactory.getLogger(clazz));
+        try {
 
-        return loggers.get(clazz);
+            if (!loggers.containsKey(clazz))
+                loggers.put(clazz, LoggerFactory.getLogger(clazz));
+
+            return loggers.get(clazz);
+
+        } catch (Exception e) {
+
+            throw new LoggerServiceException(e);
+        }
     }
 }
