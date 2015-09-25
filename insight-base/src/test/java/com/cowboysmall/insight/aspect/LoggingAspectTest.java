@@ -206,4 +206,33 @@ public class LoggingAspectTest {
                 "[ exception thrown by < callDelegateThrowsUncheckedException > with args [something] with message UncheckedException ]",
                 messageService.getMessageList().get(3));
     }
+
+    @Test
+    public void testInsightLoggingAspect_CallDelegate_RethrownUncheckedException() {
+
+        try {
+
+            someService.callDelegateThrowsUncheckedExceptionAndRethrows("something");
+
+        } catch (Exception e) {
+
+            // proceed
+        }
+
+        assertEquals(4, messageService.getMessageList().size());
+        assertEquals(1, messageService.getExceptionList().size());
+
+        assertEquals(
+                "[ entering < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] ]",
+                messageService.getMessageList().get(0));
+        assertEquals(
+                "[ entering < throwsUncheckedException > with args [something] ]",
+                messageService.getMessageList().get(1));
+        assertEquals(
+                "[ exception thrown by < throwsUncheckedException > with args [something] with message UncheckedException ]",
+                messageService.getMessageList().get(2));
+        assertEquals(
+                "[ exception thrown by < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] with message UncheckedException ]",
+                messageService.getMessageList().get(3));
+    }
 }

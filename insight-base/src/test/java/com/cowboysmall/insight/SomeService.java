@@ -58,4 +58,17 @@ public class SomeService {
 
         someDelegateService.throwsUncheckedException(someArg);
     }
+
+    @Loggable(LogLevel.INFO)
+    public void callDelegateThrowsUncheckedExceptionAndRethrows(Object someArg) {
+
+        try {
+
+            someDelegateService.throwsUncheckedException(someArg);
+
+        } catch (Exception e) {
+
+            throw new RuntimeException("UncheckedException", e);
+        }
+    }
 }

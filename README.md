@@ -5,6 +5,8 @@ Insight
 
 [![Circle CI](https://circleci.com/gh/cowboysmall/insight.svg?style=svg)](https://circleci.com/gh/cowboysmall/insight)
 
+[![codecov.io](http://codecov.io/github/cowboysmall/insight/coverage.svg?branch=master)](http://codecov.io/github/cowboysmall/insight?branch=master)
+
 A simple tool for logging and profiling objects managed within a Spring container.
 
 

@@ -32,7 +32,7 @@ public class LoggingAspect {
 
     //_________________________________________________________________________
 
-    @Before(value = "@annotation(insightLogging)", argNames = "joinPoint, insightLogging")
+    @Before(value = "@annotation(loggable)", argNames = "joinPoint, loggable")
     public void before(JoinPoint joinPoint, Loggable loggable) {
 
         messageService.message(
@@ -46,7 +46,7 @@ public class LoggingAspect {
         );
     }
 
-    @AfterThrowing(value = "@annotation(insightLogging)", throwing = "throwable", argNames = "joinPoint, insightLogging, throwable")
+    @AfterThrowing(value = "@annotation(loggable)", throwing = "throwable", argNames = "joinPoint, loggable, throwable")
     public void afterThrowing(JoinPoint joinPoint, Loggable loggable, Throwable throwable) {
 
         if (!exceptions.contains(throwable) && !exceptions.contains(throwable.getCause())) {
@@ -79,7 +79,7 @@ public class LoggingAspect {
         }
     }
 
-    @AfterReturning(value = "@annotation(insightLogging)", returning = "returnValue", argNames = "joinPoint, insightLogging, returnValue")
+    @AfterReturning(value = "@annotation(loggable)", returning = "returnValue", argNames = "joinPoint, loggable, returnValue")
     public void afterReturning(JoinPoint joinPoint, Loggable loggable, Object returnValue) {
 
         messageService.message(
