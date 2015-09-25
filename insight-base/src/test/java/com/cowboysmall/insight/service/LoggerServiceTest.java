@@ -46,5 +46,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
 
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
+
+        loggerService.getLogger(LoggerServiceImpl.class);
     }
 }
