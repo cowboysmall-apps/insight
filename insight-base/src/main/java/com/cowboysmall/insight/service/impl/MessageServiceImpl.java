@@ -38,8 +38,8 @@ public class MessageServiceImpl implements MessageService {
                     logger.debug(message);
                     break;
 
-                case INFO:
-                    logger.info(message);
+                case ERROR:
+                    logger.error(message);
                     break;
 
                 case WARN:
@@ -47,7 +47,7 @@ public class MessageServiceImpl implements MessageService {
                     break;
 
                 default:
-                    logger.error(message);
+                    logger.info(message);
             }
 
         } catch (Exception e) {
@@ -73,8 +73,8 @@ public class MessageServiceImpl implements MessageService {
                     logger.debug(message, throwable);
                     break;
 
-                case INFO:
-                    logger.info(message, throwable);
+                case ERROR:
+                    logger.error(message, throwable);
                     break;
 
                 case WARN:
@@ -82,7 +82,7 @@ public class MessageServiceImpl implements MessageService {
                     break;
 
                 default:
-                    logger.error(message, throwable);
+                    logger.info(message, throwable);
             }
 
         } catch (Exception e) {

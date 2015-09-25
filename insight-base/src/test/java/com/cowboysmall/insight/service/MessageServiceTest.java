@@ -17,30 +17,30 @@ import static org.junit.Assert.assertTrue;
 public class MessageServiceTest {
 
     @Test
-    public void testInsightMessageService_Info() {
+    public void testInsightMessageService_Error() {
 
         MockLoggerService loggerService = new MockLoggerService();
 
         MessageServiceImpl messageService = new MessageServiceImpl();
         ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
 
-        messageService.message(LogLevel.INFO, MessageServiceImpl.class, "Testes!");
+        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!");
 
-        assertTrue(loggerService.logger.infoCalled);
+        assertTrue(loggerService.logger.errorCalled);
         assertEquals("Testes!", loggerService.logger.message);
     }
 
     @Test
-    public void testInsightMessageService_Info_Exception() {
+    public void testInsightMessageService_Error_Exception() {
 
         MockLoggerService loggerService = new MockLoggerService();
 
         MessageServiceImpl messageService = new MessageServiceImpl();
         ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
 
-        messageService.message(LogLevel.INFO, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
+        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
 
-        assertTrue(loggerService.logger.infoCalled);
+        assertTrue(loggerService.logger.errorCalled);
         assertEquals("Testes!", loggerService.logger.message);
         assertEquals("Testes!", loggerService.logger.throwable.getMessage());
     }
@@ -144,9 +144,9 @@ public class MessageServiceTest {
         MessageServiceImpl messageService = new MessageServiceImpl();
         ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
 
-        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!");
+        messageService.message(LogLevel.INFO, MessageServiceImpl.class, "Testes!");
 
-        assertTrue(loggerService.logger.errorCalled);
+        assertTrue(loggerService.logger.infoCalled);
         assertEquals("Testes!", loggerService.logger.message);
     }
 
@@ -158,9 +158,9 @@ public class MessageServiceTest {
         MessageServiceImpl messageService = new MessageServiceImpl();
         ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
 
-        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
+        messageService.message(LogLevel.INFO, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
 
-        assertTrue(loggerService.logger.errorCalled);
+        assertTrue(loggerService.logger.infoCalled);
         assertEquals("Testes!", loggerService.logger.message);
         assertEquals("Testes!", loggerService.logger.throwable.getMessage());
     }
