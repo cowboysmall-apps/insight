@@ -1,7 +1,7 @@
 package com.cowboysmall.insight;
 
 import com.cowboysmall.insight.service.MessageService;
-import com.cowboysmall.insight.service.MockMessageService;
+import com.cowboysmall.insight.mock.MockMessageService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

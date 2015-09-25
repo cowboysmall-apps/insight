@@ -1,6 +1,7 @@
-package com.cowboysmall.insight.service;
+package com.cowboysmall.insight.mock;
 
 import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.service.MessageService;
 
 import java.util.ArrayList;
 import java.util.List;

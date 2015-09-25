@@ -46,7 +46,7 @@ public class MessageServiceImpl implements MessageService {
                     logger.warn(message);
                     break;
 
-                case ERROR:
+                default:
                     logger.error(message);
             }
 
@@ -81,7 +81,7 @@ public class MessageServiceImpl implements MessageService {
                     logger.warn(message, throwable);
                     break;
 
-                case ERROR:
+                default:
                     logger.error(message, throwable);
             }
 

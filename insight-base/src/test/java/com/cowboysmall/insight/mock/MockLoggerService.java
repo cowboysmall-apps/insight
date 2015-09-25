@@ -1,5 +1,6 @@
-package com.cowboysmall.insight.service;
+package com.cowboysmall.insight.mock;
 
+import com.cowboysmall.insight.service.LoggerService;
 import org.slf4j.Logger;
 
 /**

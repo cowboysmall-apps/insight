@@ -1,6 +1,7 @@
 package com.cowboysmall.insight.service;
 
 import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.mock.MockLoggerService;
 import com.cowboysmall.insight.service.impl.MessageServiceImpl;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
@@ -76,36 +77,6 @@ public class MessageServiceTest {
 
 
     @Test
-    public void testInsightMessageService_Error() {
-
-        MockLoggerService loggerService = new MockLoggerService();
-
-        MessageServiceImpl messageService = new MessageServiceImpl();
-        ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
-
-        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!");
-
-        assertTrue(loggerService.logger.errorCalled);
-        assertEquals("Testes!", loggerService.logger.message);
-    }
-
-    @Test
-    public void testInsightMessageService_Error_Exception() {
-
-        MockLoggerService loggerService = new MockLoggerService();
-
-        MessageServiceImpl messageService = new MessageServiceImpl();
-        ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
-
-        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
-
-        assertTrue(loggerService.logger.errorCalled);
-        assertEquals("Testes!", loggerService.logger.message);
-        assertEquals("Testes!", loggerService.logger.throwable.getMessage());
-    }
-
-
-    @Test
     public void testInsightMessageService_Trace() {
 
         MockLoggerService loggerService = new MockLoggerService();
@@ -160,6 +131,36 @@ public class MessageServiceTest {
         messageService.message(LogLevel.WARN, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(loggerService.logger.warnCalled);
+        assertEquals("Testes!", loggerService.logger.message);
+        assertEquals("Testes!", loggerService.logger.throwable.getMessage());
+    }
+
+
+    @Test
+    public void testInsightMessageService_Default() {
+
+        MockLoggerService loggerService = new MockLoggerService();
+
+        MessageServiceImpl messageService = new MessageServiceImpl();
+        ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
+
+        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!");
+
+        assertTrue(loggerService.logger.errorCalled);
+        assertEquals("Testes!", loggerService.logger.message);
+    }
+
+    @Test
+    public void testInsightMessageService_Default_Exception() {
+
+        MockLoggerService loggerService = new MockLoggerService();
+
+        MessageServiceImpl messageService = new MessageServiceImpl();
+        ReflectionTestUtils.setField(messageService, "loggerService", loggerService);
+
+        messageService.message(LogLevel.ERROR, MessageServiceImpl.class, "Testes!", new Exception("Testes!"));
+
+        assertTrue(loggerService.logger.errorCalled);
         assertEquals("Testes!", loggerService.logger.message);
         assertEquals("Testes!", loggerService.logger.throwable.getMessage());
     }

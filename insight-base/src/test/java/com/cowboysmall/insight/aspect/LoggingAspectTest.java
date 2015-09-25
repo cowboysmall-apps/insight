@@ -1,9 +1,8 @@
 package com.cowboysmall.insight.aspect;
 
-import com.cowboysmall.insight.SomeService;
+import com.cowboysmall.insight.object.SomeService;
 import com.cowboysmall.insight.TestContextConfiguration;
-import com.cowboysmall.insight.service.MessageService;
-import com.cowboysmall.insight.service.MockMessageService;
+import com.cowboysmall.insight.mock.MockMessageService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

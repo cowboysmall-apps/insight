@@ -1,4 +1,4 @@
-package com.cowboysmall.insight.service;
+package com.cowboysmall.insight.mock;
 
 import org.slf4j.Logger;
 import org.slf4j.Marker;
