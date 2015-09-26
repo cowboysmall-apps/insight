@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -29,6 +30,15 @@ public class LoggingAspect {
     @Autowired
     private MessageService messageService;
 
+    @Value("${logging.before}")
+    private String beforeString;
+
+    @Value("${logging.afterThrowing}")
+    private String afterThrowingString;
+
+    @Value("${logging.afterReturning}")
+    private String afterReturningString;
+
 
     //_________________________________________________________________________
 
@@ -39,7 +49,7 @@ public class LoggingAspect {
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
-                        "[ entering < %s > with args %s ]",
+                        beforeString,
                         joinPoint.getSignature().getName(),
                         Arrays.toString(joinPoint.getArgs())
                 )
@@ -55,7 +65,7 @@ public class LoggingAspect {
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
                     String.format(
-                            "[ exception thrown by < %s > with args %s with message %s ]",
+                            afterThrowingString,
                             joinPoint.getSignature().getName(),
                             Arrays.toString(joinPoint.getArgs()),
                             throwable.getMessage()
@@ -70,7 +80,7 @@ public class LoggingAspect {
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
                     String.format(
-                            "[ exception thrown by < %s > with args %s with message %s ]",
+                            afterThrowingString,
                             joinPoint.getSignature().getName(),
                             Arrays.toString(joinPoint.getArgs()),
                             throwable.getMessage()
@@ -86,7 +96,7 @@ public class LoggingAspect {
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
-                        "[ leaving < %s > returning %s ]",
+                        afterReturningString,
                         joinPoint.getSignature().getName(),
                         returnValue != null && returnValue.getClass().isArray()
                                 ? Arrays.toString((Object[]) returnValue)

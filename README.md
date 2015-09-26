@@ -40,6 +40,7 @@ then let your application know to use the aspects:
 
         @SpringBootApplication
         @ComponentScan(basePackages = {"com.cowboysmall.insight", "..."})
+        @PropertySource("classpath:insight.properties")
         @EnableAspectJAutoProxy
         public class MyApplication {
 
@@ -81,18 +82,19 @@ A demo application is provided to demonstrate usage in a Spring Boot context. It
                 │       └── cowboysmall
                 │           └── insight
                 │               └── demo
+                │                   ├── DemoApplication.java
                 │                   ├── job
                 │                   │   └── DemoJob.java
-                │                   ├── DemoApplication.java
                 │                   ├── service
-                │                   │   ├── impl
-                │                   │   │   └── DemoServiceImpl.java
                 │                   │   ├── DemoServiceException.java
-                │                   │   └── DemoService.java
+                │                   │   ├── DemoService.java
+                │                   │   └── impl
+                │                   │       └── DemoServiceImpl.java
                 │                   └── web
                 │                       └── DemoController.java
                 └── resources
                     ├── banner.txt
+                    ├── insight.properties
                     └── logback.xml
 
 `
