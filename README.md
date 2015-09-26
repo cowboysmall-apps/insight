@@ -33,7 +33,7 @@ or include the following in your gradle build:
 
 ```
 
-then let your application know to use the aspects:
+then let your application know to use the aspects, and to load the default properties (which you may override - see demo):
 
 ```java
 
