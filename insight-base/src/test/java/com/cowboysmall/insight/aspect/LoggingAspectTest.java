@@ -1,9 +1,8 @@
 package com.cowboysmall.insight.aspect;
 
-import com.cowboysmall.insight.SomeService;
+import com.cowboysmall.insight.object.SomeService;
 import com.cowboysmall.insight.TestContextConfiguration;
-import com.cowboysmall.insight.service.MessageService;
-import com.cowboysmall.insight.service.MockMessageService;
+import com.cowboysmall.insight.mock.MockMessageService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -204,6 +203,35 @@ public class LoggingAspectTest {
                 messageService.getMessageList().get(2));
         assertEquals(
                 "[ exception thrown by < callDelegateThrowsUncheckedException > with args [something] with message UncheckedException ]",
+                messageService.getMessageList().get(3));
+    }
+
+    @Test
+    public void testInsightLoggingAspect_CallDelegate_RethrownUncheckedException() {
+
+        try {
+
+            someService.callDelegateThrowsUncheckedExceptionAndRethrows("something");
+
+        } catch (Exception e) {
+
+            // proceed
+        }
+
+        assertEquals(4, messageService.getMessageList().size());
+        assertEquals(1, messageService.getExceptionList().size());
+
+        assertEquals(
+                "[ entering < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] ]",
+                messageService.getMessageList().get(0));
+        assertEquals(
+                "[ entering < throwsUncheckedException > with args [something] ]",
+                messageService.getMessageList().get(1));
+        assertEquals(
+                "[ exception thrown by < throwsUncheckedException > with args [something] with message UncheckedException ]",
+                messageService.getMessageList().get(2));
+        assertEquals(
+                "[ exception thrown by < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] with message UncheckedException ]",
                 messageService.getMessageList().get(3));
     }
 }

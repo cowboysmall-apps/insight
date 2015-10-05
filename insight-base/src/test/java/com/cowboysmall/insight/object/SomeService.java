@@ -1,5 +1,7 @@
-package com.cowboysmall.insight;
+package com.cowboysmall.insight.object;
 
+import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Loggable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -57,5 +59,18 @@ public class SomeService {
     public void callDelegateThrowsUncheckedException(Object someArg) {
 
         someDelegateService.throwsUncheckedException(someArg);
+    }
+
+    @Loggable(LogLevel.INFO)
+    public void callDelegateThrowsUncheckedExceptionAndRethrows(Object someArg) {
+
+        try {
+
+            someDelegateService.throwsUncheckedException(someArg);
+
+        } catch (Exception e) {
+
+            throw new RuntimeException("UncheckedException", e);
+        }
     }
 }

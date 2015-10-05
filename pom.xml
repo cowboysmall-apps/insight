@@ -9,7 +9,7 @@
     <groupId>com.cowboysmall.insight</groupId>
     <artifactId>insight</artifactId>
     <name>insight</name>
-    <version>0.0.5</version>
+    <version>0.1.0</version>
 
 
     <packaging>pom</packaging>

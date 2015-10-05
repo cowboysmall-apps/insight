@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -29,24 +30,33 @@ public class LoggingAspect {
     @Autowired
     private MessageService messageService;
 
+    @Value("${logging.before}")
+    private String beforeString;
+
+    @Value("${logging.afterThrowing}")
+    private String afterThrowingString;
+
+    @Value("${logging.afterReturning}")
+    private String afterReturningString;
+
 
     //_________________________________________________________________________
 
-    @Before(value = "@annotation(insightLogging)", argNames = "joinPoint, insightLogging")
+    @Before(value = "@annotation(loggable)", argNames = "joinPoint, loggable")
     public void before(JoinPoint joinPoint, Loggable loggable) {
 
         messageService.message(
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
-                        "[ entering < %s > with args %s ]",
+                        beforeString,
                         joinPoint.getSignature().getName(),
                         Arrays.toString(joinPoint.getArgs())
                 )
         );
     }
 
-    @AfterThrowing(value = "@annotation(insightLogging)", throwing = "throwable", argNames = "joinPoint, insightLogging, throwable")
+    @AfterThrowing(value = "@annotation(loggable)", throwing = "throwable", argNames = "joinPoint, loggable, throwable")
     public void afterThrowing(JoinPoint joinPoint, Loggable loggable, Throwable throwable) {
 
         if (!exceptions.contains(throwable) && !exceptions.contains(throwable.getCause())) {
@@ -55,7 +65,7 @@ public class LoggingAspect {
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
                     String.format(
-                            "[ exception thrown by < %s > with args %s with message %s ]",
+                            afterThrowingString,
                             joinPoint.getSignature().getName(),
                             Arrays.toString(joinPoint.getArgs()),
                             throwable.getMessage()
@@ -70,7 +80,7 @@ public class LoggingAspect {
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
                     String.format(
-                            "[ exception thrown by < %s > with args %s with message %s ]",
+                            afterThrowingString,
                             joinPoint.getSignature().getName(),
                             Arrays.toString(joinPoint.getArgs()),
                             throwable.getMessage()
@@ -79,14 +89,14 @@ public class LoggingAspect {
         }
     }
 
-    @AfterReturning(value = "@annotation(insightLogging)", returning = "returnValue", argNames = "joinPoint, insightLogging, returnValue")
+    @AfterReturning(value = "@annotation(loggable)", returning = "returnValue", argNames = "joinPoint, loggable, returnValue")
     public void afterReturning(JoinPoint joinPoint, Loggable loggable, Object returnValue) {
 
         messageService.message(
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
-                        "[ leaving < %s > returning %s ]",
+                        afterReturningString,
                         joinPoint.getSignature().getName(),
                         returnValue != null && returnValue.getClass().isArray()
                                 ? Arrays.toString((Object[]) returnValue)

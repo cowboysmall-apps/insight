@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,10 +20,13 @@ public class ProfilingAspect {
     @Autowired
     private MessageService messageService;
 
+    @Value("${profiling.around}")
+    private String aroundString;
+
 
     //_________________________________________________________________________
 
-    @Around(value = "@annotation(insightProfiling)", argNames = "proceedingJoinPoint, insightProfiling")
+    @Around(value = "@annotation(profilable)", argNames = "proceedingJoinPoint, profilable")
     public Object around(ProceedingJoinPoint proceedingJoinPoint, Profilable profilable) throws Throwable {
 
         long start = System.currentTimeMillis();
@@ -38,7 +42,7 @@ public class ProfilingAspect {
                     profilable.value(),
                     proceedingJoinPoint.getTarget().getClass(),
                     String.format(
-                            "[ time taken to execute < %s > = %sms ]",
+                            aroundString,
                             proceedingJoinPoint.getSignature().getName(),
                             (end - start)
                     )

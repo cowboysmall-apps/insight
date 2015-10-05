@@ -1,5 +1,7 @@
-package com.cowboysmall.insight;
+package com.cowboysmall.insight.object;
 
+import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Profilable;
 import org.springframework.stereotype.Component;
 
 /**

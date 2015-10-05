@@ -1,9 +1,10 @@
 Insight
 =======
 
-[![Join the chat at https://gitter.im/cowboysmall/insight](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cowboysmall/insight?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Circle CI](https://circleci.com/gh/cowboysmall/insight.svg?style=svg)](https://circleci.com/gh/cowboysmall/insight)
+[![codecov.io](http://codecov.io/github/cowboysmall/insight/coverage.svg?branch=master)](http://codecov.io/github/cowboysmall/insight?branch=master)
+[![Download](https://api.bintray.com/packages/cowboysmall/maven/com.cowboysmall.insight/images/download.svg)](https://bintray.com/cowboysmall/maven/com.cowboysmall.insight/_latestVersion)
+[![Join the chat at https://gitter.im/cowboysmall/insight](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cowboysmall/insight?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![codecov.io](http://codecov.io/github/cowboysmall/insight/coverage.svg?branch=master)](http://codecov.io/github/cowboysmall/insight?branch=master)
 
@@ -34,12 +35,13 @@ or include the following in your gradle build:
 
 ```
 
-then let your application know to use the aspects:
+then let your application know to use the aspects, and to load the default properties (which you may override - see demo):
 
 ```java
 
         @SpringBootApplication
         @ComponentScan(basePackages = {"com.cowboysmall.insight", "..."})
+        @PropertySource("classpath:insight.properties")
         @EnableAspectJAutoProxy
         public class MyApplication {
 
@@ -81,18 +83,19 @@ A demo application is provided to demonstrate usage in a Spring Boot context. It
                 │       └── cowboysmall
                 │           └── insight
                 │               └── demo
+                │                   ├── DemoApplication.java
                 │                   ├── job
                 │                   │   └── DemoJob.java
-                │                   ├── DemoApplication.java
                 │                   ├── service
-                │                   │   ├── impl
-                │                   │   │   └── DemoServiceImpl.java
                 │                   │   ├── DemoServiceException.java
-                │                   │   └── DemoService.java
+                │                   │   ├── DemoService.java
+                │                   │   └── impl
+                │                   │       └── DemoServiceImpl.java
                 │                   └── web
                 │                       └── DemoController.java
                 └── resources
                     ├── banner.txt
+                    ├── insight.properties
                     └── logback.xml
 
 `
