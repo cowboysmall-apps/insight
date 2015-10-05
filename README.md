@@ -71,7 +71,7 @@ Demo App
 
 A demo application is provided to demonstrate usage in a Spring Boot context. It includes the following:
 
-`
+```
 
         ├── pom.xml
         └── src
@@ -96,27 +96,27 @@ A demo application is provided to demonstrate usage in a Spring Boot context. It
                     ├── insight.properties
                     └── logback.xml
 
-`
+```
 
 once built, either execute the following through maven:
 
-`
+```
 
         mvn spring-boot:run
 
-`
+```
 
 or execute the following:
 
-`
+```
 
         java -jar insight-demo/target/insight-demo-0.1.1.jar
 
-`
+```
 
 and you will see something like the following:
 
-`
+```
 
           ___         _      _   _     ___
          |_ _|_ _  __(_)__ _| |_| |_  |   \ ___ _ __  ___
@@ -138,7 +138,7 @@ and you will see something like the following:
         23:17:05.510 [pool-1-thread-1] INFO  c.c.i.d.s.impl.DemoServiceImpl - [ time taken to execute < scheduled > = 508ms ]
         23:17:05.511 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ leaving < execute > returning null ]
 
-`
+```
 
 
 Bugs and Feature Requests
