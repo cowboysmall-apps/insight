@@ -24,7 +24,7 @@ import java.util.WeakHashMap;
 @Component
 public class LoggingAspect {
 
-    private Set<Throwable> exceptions = Collections.newSetFromMap(new WeakHashMap<>());
+    private Set<Throwable> exceptions = Collections.newSetFromMap(new WeakHashMap<Throwable, Boolean>());
 
 
     @Autowired
