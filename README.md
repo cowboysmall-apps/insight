@@ -109,7 +109,7 @@ or execute the following:
 
 ```
 
-        java -jar insight-demo/target/insight-demo-0.1.1.jar
+        java -jar insight-demo/target/insight-demo-0.2.0.jar
 
 ```
 
