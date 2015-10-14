@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.cowboysmall.insight"})
-@PropertySource("classpath:insight.properties")
 @EnableAspectJAutoProxy
 @EnableScheduling
 public class DemoApplication {

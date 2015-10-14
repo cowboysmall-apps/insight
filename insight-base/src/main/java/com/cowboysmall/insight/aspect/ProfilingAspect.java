@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.aspect;
 
 import com.cowboysmall.insight.Profilable;
-import com.cowboysmall.insight.service.MessageService;
+import com.cowboysmall.insight.service.LoggerService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 public class ProfilingAspect {
 
     @Autowired
-    private MessageService messageService;
+    private LoggerService loggerService;
 
-    @Value("${profiling.around}")
+    @Value("${profiling.around: time taken to execute < %s > = %sms }")
     private String aroundString;
 
 
@@ -38,7 +38,7 @@ public class ProfilingAspect {
 
             long end = System.currentTimeMillis();
 
-            messageService.message(
+            loggerService.log(
                     profilable.value(),
                     proceedingJoinPoint.getTarget().getClass(),
                     String.format(

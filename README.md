@@ -19,7 +19,7 @@ add a dependency for the version you want to use in your maven pom:
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.1.1</version>
+            <version>0.2.0</version>
         </dependency>
 
 ```
@@ -29,17 +29,16 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile group: 'com.cowboysmall.insight', name: 'insight-logback', version: '0.1.1'
+        compile group: 'com.cowboysmall.insight', name: 'insight-logback', version: '0.2.0'
 
 ```
 
-then let your application know to use the aspects, and to load the default properties (which you may override - see demo):
+then let your application know to use the aspects, and override the default properties if you chose to (see demo):
 
 ```java
 
         @SpringBootApplication
         @ComponentScan(basePackages = {"com.cowboysmall.insight", "..."})
-        @PropertySource("classpath:insight.properties")
         @EnableAspectJAutoProxy
         public class MyApplication {
 
@@ -92,8 +91,8 @@ A demo application is provided to demonstrate usage in a Spring Boot context. It
                 │                   └── web
                 │                       └── DemoController.java
                 └── resources
+                    ├── application.properties
                     ├── banner.txt
-                    ├── insight.properties
                     └── logback.xml
 
 ```

@@ -1,8 +1,8 @@
 package com.cowboysmall.insight.aspect;
 
-import com.cowboysmall.insight.object.SomeOtherService;
 import com.cowboysmall.insight.TestContextConfiguration;
-import com.cowboysmall.insight.mock.MockMessageService;
+import com.cowboysmall.insight.mock.MockLoggerService;
+import com.cowboysmall.insight.object.SomeOtherService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class ProfilingAspectTest {
 
     @Autowired
-    private MockMessageService insightMessageService;
+    private MockLoggerService insightMessageService;
 
     @Autowired
     private SomeOtherService someOtherService;
@@ -43,7 +43,7 @@ public class ProfilingAspectTest {
         someOtherService.doSomething();
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("[ time taken to execute < doSomething > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomething > = "));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithArgs("first", 2l);
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("[ time taken to execute < doSomethingWithArgs > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithArgs > = "));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithReturn();
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("[ time taken to execute < doSomethingWithReturn > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithReturn > = "));
     }
 
     @Test
@@ -70,6 +70,6 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithArgsAndReturn("first", 2l, 3.0);
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("[ time taken to execute < doSomethingWithArgsAndReturn > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithArgsAndReturn > = "));
     }
 }

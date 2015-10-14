@@ -1,13 +1,11 @@
 package com.cowboysmall.insight;
 
-import com.cowboysmall.insight.mock.MockMessageService;
-import com.cowboysmall.insight.service.MessageService;
+import com.cowboysmall.insight.mock.MockLoggerService;
+import com.cowboysmall.insight.service.LoggerService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
@@ -16,14 +14,13 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan(basePackages = {"com.cowboysmall.insight"})
-@PropertySource("classpath:insight.properties")
 @EnableAspectJAutoProxy
 public class TestContextConfiguration {
 
     @Bean
-    public MessageService messageService() {
+    public LoggerService loggerService() {
 
-        return new MockMessageService();
+        return new MockLoggerService();
     }
 
     @Bean

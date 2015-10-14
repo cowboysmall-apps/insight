@@ -9,6 +9,8 @@ import org.slf4j.Marker;
 
 public class MockLogger implements Logger {
 
+    public boolean raiseException = false;
+
     public boolean traceCalled = false;
     public boolean debugCalled = false;
     public boolean infoCalled = false;
@@ -22,6 +24,10 @@ public class MockLogger implements Logger {
     public void trace(String msg) {
 
         traceCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
     }
 
@@ -29,6 +35,10 @@ public class MockLogger implements Logger {
     public void trace(String msg, Throwable t) {
 
         traceCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
         throwable = t;
     }
@@ -37,6 +47,10 @@ public class MockLogger implements Logger {
     public void debug(String msg) {
 
         debugCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
     }
 
@@ -44,6 +58,10 @@ public class MockLogger implements Logger {
     public void debug(String msg, Throwable t) {
 
         debugCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
         throwable = t;
     }
@@ -52,6 +70,10 @@ public class MockLogger implements Logger {
     public void info(String msg) {
 
         infoCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
     }
 
@@ -59,6 +81,10 @@ public class MockLogger implements Logger {
     public void info(String msg, Throwable t) {
 
         infoCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
         throwable = t;
     }
@@ -67,6 +93,10 @@ public class MockLogger implements Logger {
     public void warn(String msg) {
 
         warnCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
     }
 
@@ -74,6 +104,10 @@ public class MockLogger implements Logger {
     public void warn(String msg, Throwable t) {
 
         warnCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
         throwable = t;
     }
@@ -82,6 +116,10 @@ public class MockLogger implements Logger {
     public void error(String msg) {
 
         errorCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
     }
 
@@ -89,6 +127,10 @@ public class MockLogger implements Logger {
     public void error(String msg, Throwable t) {
 
         errorCalled = true;
+
+        if (raiseException)
+            throw new RuntimeException("Exception Raised");
+
         message = msg;
         throwable = t;
     }

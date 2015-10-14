@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.demo.web;
 
-import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Loggable;
 import com.cowboysmall.insight.Profilable;
 import com.cowboysmall.insight.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;

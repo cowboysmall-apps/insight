@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.aspect;
 
 import com.cowboysmall.insight.Loggable;
-import com.cowboysmall.insight.service.MessageService;
+import com.cowboysmall.insight.service.LoggerService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -28,15 +28,15 @@ public class LoggingAspect {
 
 
     @Autowired
-    private MessageService messageService;
+    private LoggerService loggerService;
 
-    @Value("${logging.before}")
+    @Value("${logging.before: entering < %s > with args %s }")
     private String beforeString;
 
-    @Value("${logging.afterThrowing}")
+    @Value("${logging.afterThrowing: exception thrown by < %s > with args %s with message '%s' }")
     private String afterThrowingString;
 
-    @Value("${logging.afterReturning}")
+    @Value("${logging.afterReturning: leaving < %s > returning %s }")
     private String afterReturningString;
 
 
@@ -45,7 +45,7 @@ public class LoggingAspect {
     @Before(value = "@annotation(loggable)", argNames = "joinPoint, loggable")
     public void before(JoinPoint joinPoint, Loggable loggable) {
 
-        messageService.message(
+        loggerService.log(
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
@@ -59,9 +59,22 @@ public class LoggingAspect {
     @AfterThrowing(value = "@annotation(loggable)", throwing = "throwable", argNames = "joinPoint, loggable, throwable")
     public void afterThrowing(JoinPoint joinPoint, Loggable loggable, Throwable throwable) {
 
-        if (!exceptions.contains(throwable) && !exceptions.contains(throwable.getCause())) {
+        if (exceptions.contains(throwable) || exceptions.contains(throwable.getCause())) {
 
-            messageService.message(
+            loggerService.log(
+                    loggable.value(),
+                    joinPoint.getTarget().getClass(),
+                    String.format(
+                            afterThrowingString,
+                            joinPoint.getSignature().getName(),
+                            Arrays.toString(joinPoint.getArgs()),
+                            throwable.getMessage()
+                    )
+            );
+
+        } else {
+
+            loggerService.log(
                     loggable.value(),
                     joinPoint.getTarget().getClass(),
                     String.format(
@@ -73,26 +86,13 @@ public class LoggingAspect {
                     throwable
             );
             exceptions.add(throwable);
-
-        } else {
-
-            messageService.message(
-                    loggable.value(),
-                    joinPoint.getTarget().getClass(),
-                    String.format(
-                            afterThrowingString,
-                            joinPoint.getSignature().getName(),
-                            Arrays.toString(joinPoint.getArgs()),
-                            throwable.getMessage()
-                    )
-            );
         }
     }
 
     @AfterReturning(value = "@annotation(loggable)", returning = "returnValue", argNames = "joinPoint, loggable, returnValue")
     public void afterReturning(JoinPoint joinPoint, Loggable loggable, Object returnValue) {
 
-        messageService.message(
+        loggerService.log(
                 loggable.value(),
                 joinPoint.getTarget().getClass(),
                 String.format(
