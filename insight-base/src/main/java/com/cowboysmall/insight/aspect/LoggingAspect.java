@@ -24,7 +24,7 @@ import java.util.WeakHashMap;
 @Component
 public class LoggingAspect {
 
-    private Set<Throwable> exceptions = Collections.newSetFromMap(new WeakHashMap<Throwable, Boolean>());
+    private Set<Throwable> exceptions = Collections.newSetFromMap(new WeakHashMap<>());
 
 
     @Autowired
@@ -98,9 +98,7 @@ public class LoggingAspect {
                 String.format(
                         afterReturningString,
                         joinPoint.getSignature().getName(),
-                        returnValue != null && returnValue.getClass().isArray()
-                                ? Arrays.toString((Object[]) returnValue)
-                                : returnValue
+                        returnValue != null && returnValue.getClass().isArray() ? Arrays.toString((Object[]) returnValue) : returnValue
                 )
         );
     }

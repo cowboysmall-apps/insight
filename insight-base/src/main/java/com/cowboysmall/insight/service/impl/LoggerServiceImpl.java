@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,27 +47,12 @@ public class LoggerServiceImpl implements LoggerService {
 
         try {
 
-            switch (level) {
+            Logger logger = getLogger(clazz);
 
-                case TRACE:
-                    getLogger(clazz).trace(message);
-                    break;
-
-                case DEBUG:
-                    getLogger(clazz).debug(message);
-                    break;
-
-                case ERROR:
-                    getLogger(clazz).error(message);
-                    break;
-
-                case WARN:
-                    getLogger(clazz).warn(message);
-                    break;
-
-                default:
-                    getLogger(clazz).info(message);
-            }
+            logger
+                    .getClass()
+                    .getMethod(level.name().toLowerCase(), String.class)
+                    .invoke(logger, message);
 
         } catch (Exception e) {
 
@@ -79,27 +65,12 @@ public class LoggerServiceImpl implements LoggerService {
 
         try {
 
-            switch (level) {
+            Logger logger = getLogger(clazz);
 
-                case TRACE:
-                    getLogger(clazz).trace(message, throwable);
-                    break;
-
-                case DEBUG:
-                    getLogger(clazz).debug(message, throwable);
-                    break;
-
-                case ERROR:
-                    getLogger(clazz).error(message, throwable);
-                    break;
-
-                case WARN:
-                    getLogger(clazz).warn(message, throwable);
-                    break;
-
-                default:
-                    getLogger(clazz).info(message, throwable);
-            }
+            logger
+                    .getClass()
+                    .getMethod(level.name().toLowerCase(), String.class, Throwable.class)
+                    .invoke(logger, message, throwable);
 
         } catch (Exception e) {
 

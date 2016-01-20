@@ -8,13 +8,13 @@
 
     <artifactId>insight-base</artifactId>
     <name>insight-base</name>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 
 
     <parent>
         <groupId>com.cowboysmall.insight</groupId>
         <artifactId>insight</artifactId>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
     </parent>
 
 

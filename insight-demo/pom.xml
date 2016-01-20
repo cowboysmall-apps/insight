@@ -8,13 +8,13 @@
 
     <artifactId>insight-demo</artifactId>
     <name>insight-demo</name>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 
 
     <parent>
         <groupId>com.cowboysmall.insight</groupId>
         <artifactId>insight</artifactId>
-        <version>0.2.0</version>
+        <version>0.2.1</version>
     </parent>
 
 
@@ -25,7 +25,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.2.6.RELEASE</version>
+                <version>1.3.1.RELEASE</version>
                 <executions>
                     <execution>
                         <goals>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
 
     </dependencies>
