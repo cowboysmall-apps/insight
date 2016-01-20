@@ -19,7 +19,7 @@ add a dependency for the version you want to use in your maven pom:
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </dependency>
 
 ```
@@ -29,7 +29,7 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile group: 'com.cowboysmall.insight', name: 'insight-logback', version: '0.2.0'
+        compile group: 'com.cowboysmall.insight', name: 'insight-logback', version: '0.2.1'
 
 ```
 
@@ -109,7 +109,7 @@ or execute the following:
 
 ```
 
-        java -jar insight-demo/target/insight-demo-0.2.0.jar
+        java -jar insight-demo/target/insight-demo-0.2.1.jar
 
 ```
 
@@ -123,7 +123,7 @@ and you will see something like the following:
          |___|_||_/__/_\__, |_||_\__| |___/\___|_|_|_\___/
                        |___/
 
-         :: Insight Demo :: Spring Boot  (v1.2.6.RELEASE)
+         :: Insight Demo :: Spring Boot  (v1.3.1.RELEASE)
 
 
         23:17:00.002 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ entering < execute > with args [] ]
