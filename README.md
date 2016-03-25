@@ -2,6 +2,8 @@ Insight
 =======
 
 [![Circle CI](https://circleci.com/gh/cowboysmall/insight.svg?style=svg)](https://circleci.com/gh/cowboysmall/insight)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/cowboysmall/insight.svg)](http://isitmaintained.com/project/cowboysmall/insight "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/cowboysmall/insight.svg)](http://isitmaintained.com/project/cowboysmall/insight "Percentage of issues still open")
 [![codecov.io](http://codecov.io/github/cowboysmall/insight/coverage.svg?branch=master)](http://codecov.io/github/cowboysmall/insight?branch=master)
 [![Download](https://api.bintray.com/packages/cowboysmall/maven/com.cowboysmall.insight/images/download.svg)](https://bintray.com/cowboysmall/maven/com.cowboysmall.insight/_latestVersion)
 [![Join the chat at https://gitter.im/cowboysmall/insight](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cowboysmall/insight?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
