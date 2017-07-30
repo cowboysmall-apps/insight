@@ -1,11 +1,11 @@
 
 machine:
   java:
-    version: oraclejdk8
+    version: openjdk8
 
 dependencies:
   override:
-    - mvn clean install -DskipTests
+    - mvn clean package -DskipTests
 
 test:
   post:
