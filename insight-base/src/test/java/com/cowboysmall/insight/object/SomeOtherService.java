@@ -1,6 +1,6 @@
 package com.cowboysmall.insight.object;
 
-import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Level;
 import com.cowboysmall.insight.Profilable;
 import org.springframework.stereotype.Component;
 
@@ -11,23 +11,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class SomeOtherService {
 
-    @Profilable(LogLevel.INFO)
+    @Profilable(Level.INFO)
     public void doSomething() {
 
     }
 
-    @Profilable(LogLevel.INFO)
+    @Profilable(Level.INFO)
     public void doSomethingWithArgs(String first, Long second) {
 
     }
 
-    @Profilable(LogLevel.INFO)
+    @Profilable(Level.INFO)
     public Integer doSomethingWithReturn() {
 
         return Integer.MAX_VALUE;
     }
 
-    @Profilable(LogLevel.INFO)
+    @Profilable(Level.INFO)
     public Integer doSomethingWithArgsAndReturn(String first, Long second, Double third) {
 
         return Integer.MIN_VALUE;

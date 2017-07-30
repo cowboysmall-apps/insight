@@ -20,7 +20,7 @@ public class ProfilingAspect {
     @Autowired
     private LoggerService loggerService;
 
-    @Value("${profiling.around: time taken to execute < %s > = %sms }")
+    @Value("${profiling.around:time taken to execute < %s > = %sms}")
     private String aroundString;
 
 
@@ -45,7 +45,8 @@ public class ProfilingAspect {
                             aroundString,
                             proceedingJoinPoint.getSignature().getName(),
                             (end - start)
-                    )
+                    ),
+                    null
             );
         }
     }

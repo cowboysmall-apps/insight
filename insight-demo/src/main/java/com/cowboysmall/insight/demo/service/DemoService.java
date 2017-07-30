@@ -6,7 +6,7 @@ package com.cowboysmall.insight.demo.service;
  */
 public interface DemoService {
 
-    String logging(String value1, Long value2);
+    String tracing(String value1, Long value2);
 
     String profiling(String value1, Long value2);
 

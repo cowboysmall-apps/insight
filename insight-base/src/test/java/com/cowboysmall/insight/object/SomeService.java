@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.object;
 
-import com.cowboysmall.insight.LogLevel;
-import com.cowboysmall.insight.Loggable;
+import com.cowboysmall.insight.Level;
+import com.cowboysmall.insight.Traceable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,53 +15,53 @@ public class SomeService {
     @Autowired
     private SomeDelegateService someDelegateService;
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void doSomething(Object someArg) {
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public Object doSomethingAndReturn(Object someArg) {
 
         return "SomeValue";
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public Object doSomethingAndReturnArray(Object someArg) {
 
         return new String[]{"SomeValue", "SomeOtherValue"};
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void throwsCheckedException(Object someArg) throws Exception {
 
         throw new Exception("CheckedException");
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void throwsUncheckedException(Object someArg) {
 
         throw new RuntimeException("UncheckedException");
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void callDelegate(Object someArg) {
 
         someDelegateService.doSomethingElse(someArg);
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void callDelegateThrowsCheckedException(Object someArg) throws Exception {
 
         someDelegateService.throwsCheckedException(someArg);
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void callDelegateThrowsUncheckedException(Object someArg) {
 
         someDelegateService.throwsUncheckedException(someArg);
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void callDelegateThrowsUncheckedExceptionAndRethrows(Object someArg) {
 
         try {

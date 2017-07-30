@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.demo.web;
 
-import com.cowboysmall.insight.LogLevel;
-import com.cowboysmall.insight.Loggable;
+import com.cowboysmall.insight.Level;
+import com.cowboysmall.insight.Traceable;
 import com.cowboysmall.insight.Profilable;
 import com.cowboysmall.insight.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +22,17 @@ public class DemoController {
 
     //_________________________________________________________________________
 
-    @RequestMapping("/logging")
+    @RequestMapping("/tracing")
     @ResponseBody
-    @Loggable(LogLevel.INFO)
-    public String logging() {
+    @Traceable(Level.INFO)
+    public String tracing() {
 
-        return demoService.logging("one", 2l);
+        return demoService.tracing("one", 2l);
     }
 
     @RequestMapping("/profiling")
     @ResponseBody
-    @Profilable(LogLevel.INFO)
+    @Profilable(Level.INFO)
     public String profiling() {
 
         return demoService.profiling("one", 2l);

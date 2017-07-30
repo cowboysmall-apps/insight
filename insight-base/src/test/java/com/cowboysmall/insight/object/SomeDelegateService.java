@@ -1,7 +1,7 @@
 package com.cowboysmall.insight.object;
 
-import com.cowboysmall.insight.LogLevel;
-import com.cowboysmall.insight.Loggable;
+import com.cowboysmall.insight.Level;
+import com.cowboysmall.insight.Traceable;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SomeDelegateService {
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void doSomethingElse(Object someOtherArg) {
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void throwsCheckedException(Object someOtherArg) throws Exception {
 
         throw new Exception("CheckedException");
     }
 
-    @Loggable(LogLevel.INFO)
+    @Traceable(Level.INFO)
     public void throwsUncheckedException(Object someOtherArg) {
 
         throw new RuntimeException("UncheckedException");

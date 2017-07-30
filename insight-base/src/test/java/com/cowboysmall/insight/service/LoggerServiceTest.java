@@ -1,6 +1,6 @@
 package com.cowboysmall.insight.service;
 
-import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Level;
 import com.cowboysmall.insight.mock.MockLogger;
 import com.cowboysmall.insight.service.impl.LoggerServiceImpl;
 import org.junit.Test;
@@ -67,7 +67,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.ERROR, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.ERROR, LoggerServiceImpl.class, "Testes!", null);
 
         assertTrue(logger.errorCalled);
         assertEquals("Testes!", logger.message);
@@ -84,7 +84,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.ERROR, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.ERROR, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(logger.errorCalled);
         assertEquals("Testes!", logger.message);
@@ -105,7 +105,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.DEBUG, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.DEBUG, LoggerServiceImpl.class, "Testes!", null);
 
         assertTrue(logger.debugCalled);
         assertEquals("Testes!", logger.message);
@@ -122,7 +122,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.DEBUG, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.DEBUG, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(logger.debugCalled);
         assertEquals("Testes!", logger.message);
@@ -143,7 +143,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.TRACE, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.TRACE, LoggerServiceImpl.class, "Testes!", null);
 
         assertTrue(logger.traceCalled);
         assertEquals("Testes!", logger.message);
@@ -160,7 +160,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.TRACE, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.TRACE, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(logger.traceCalled);
         assertEquals("Testes!", logger.message);
@@ -183,7 +183,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.WARN, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.WARN, LoggerServiceImpl.class, "Testes!", null);
 
         assertTrue(logger.warnCalled);
         assertEquals("Testes!", logger.message);
@@ -200,7 +200,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.WARN, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.WARN, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(logger.warnCalled);
         assertEquals("Testes!", logger.message);
@@ -223,7 +223,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.INFO, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", null);
 
         assertTrue(logger.infoCalled);
         assertEquals("Testes!", logger.message);
@@ -240,7 +240,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
 
         assertTrue(logger.infoCalled);
         assertEquals("Testes!", logger.message);
@@ -260,7 +260,7 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.INFO, LoggerServiceImpl.class, "Testes!");
+        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", null);
     }
 
     @Test(expected = LoggerServiceException.class)
@@ -275,6 +275,6 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(LogLevel.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
     }
 }

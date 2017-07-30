@@ -1,6 +1,6 @@
 package com.cowboysmall.insight.mock;
 
-import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Level;
 import com.cowboysmall.insight.service.LoggerService;
 import org.slf4j.Logger;
 
@@ -52,15 +52,10 @@ public class MockLoggerService implements LoggerService {
     }
 
     @Override
-    public void log(LogLevel level, Class<?> clazz, String message) {
+    public void log(Level level, Class<?> clazz, String message, Throwable throwable) {
 
         messageList.add(message);
-    }
-
-    @Override
-    public void log(LogLevel level, Class<?> clazz, String message, Throwable throwable) {
-
-        messageList.add(message);
-        exceptionList.add(throwable);
+        if (throwable != null)
+            exceptionList.add(throwable);
     }
 }

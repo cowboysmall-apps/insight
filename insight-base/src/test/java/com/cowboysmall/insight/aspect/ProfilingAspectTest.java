@@ -37,13 +37,15 @@ public class ProfilingAspectTest {
     }
 
 
+    //_________________________________________________________________________
+
     @Test
     public void testInsightProfilingAspect_Basic() {
 
         someOtherService.doSomething();
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomething > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomething > ="));
     }
 
     @Test
@@ -52,7 +54,7 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithArgs("first", 2l);
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithArgs > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgs > ="));
     }
 
     @Test
@@ -61,7 +63,7 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithReturn();
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithReturn > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithReturn > ="));
     }
 
     @Test
@@ -70,6 +72,6 @@ public class ProfilingAspectTest {
         someOtherService.doSomethingWithArgsAndReturn("first", 2l, 3.0);
 
         assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains(" time taken to execute < doSomethingWithArgsAndReturn > = "));
+        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgsAndReturn > ="));
     }
 }

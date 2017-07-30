@@ -1,6 +1,6 @@
 package com.cowboysmall.insight.service;
 
-import com.cowboysmall.insight.LogLevel;
+import com.cowboysmall.insight.Level;
 import org.slf4j.Logger;
 
 /**
@@ -11,7 +11,7 @@ public interface LoggerService {
 
     Logger getLogger(Class<?> clazz);
 
-    void log(LogLevel level, Class<?> clazz, String message);
+//    void log(Level level, Class<?> clazz, String message);
 
-    void log(LogLevel level, Class<?> clazz, String message, Throwable throwable);
+    void log(Level level, Class<?> clazz, String message, Throwable throwable);
 }

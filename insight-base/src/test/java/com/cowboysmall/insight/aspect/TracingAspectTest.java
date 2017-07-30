@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestContextConfiguration.class)
-public class LoggingAspectTest {
+public class TracingAspectTest {
 
     @Autowired
     private MockLoggerService logMessageService;
@@ -46,10 +46,10 @@ public class LoggingAspectTest {
         assertEquals(2, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < doSomething > with args [something] ",
+                "entering < doSomething > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " leaving < doSomething > returning null ",
+                "leaving < doSomething > returning null",
                 logMessageService.getMessageList().get(1));
     }
 
@@ -61,10 +61,10 @@ public class LoggingAspectTest {
         assertEquals(2, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < doSomethingAndReturn > with args [something] ",
+                "entering < doSomethingAndReturn > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " leaving < doSomethingAndReturn > returning SomeValue ",
+                "leaving < doSomethingAndReturn > returning SomeValue",
                 logMessageService.getMessageList().get(1));
     }
 
@@ -76,10 +76,10 @@ public class LoggingAspectTest {
         assertEquals(2, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < doSomethingAndReturnArray > with args [something] ",
+                "entering < doSomethingAndReturnArray > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " leaving < doSomethingAndReturnArray > returning [SomeValue, SomeOtherValue] ",
+                "leaving < doSomethingAndReturnArray > returning [SomeValue, SomeOtherValue]",
                 logMessageService.getMessageList().get(1));
     }
 
@@ -98,10 +98,10 @@ public class LoggingAspectTest {
         assertEquals(2, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < throwsCheckedException > with args [something] ",
+                "entering < throwsCheckedException > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException' ",
+                "exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException'",
                 logMessageService.getMessageList().get(1));
     }
 
@@ -120,10 +120,10 @@ public class LoggingAspectTest {
         assertEquals(2, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < throwsUncheckedException > with args [something] ",
+                "entering < throwsUncheckedException > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException' ",
+                "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
                 logMessageService.getMessageList().get(1));
     }
 
@@ -135,16 +135,16 @@ public class LoggingAspectTest {
         assertEquals(4, logMessageService.getMessageList().size());
 
         assertEquals(
-                " entering < callDelegate > with args [something] ",
+                "entering < callDelegate > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " entering < doSomethingElse > with args [something] ",
+                "entering < doSomethingElse > with args [something]",
                 logMessageService.getMessageList().get(1));
         assertEquals(
-                " leaving < doSomethingElse > returning null ",
+                "leaving < doSomethingElse > returning null",
                 logMessageService.getMessageList().get(2));
         assertEquals(
-                " leaving < callDelegate > returning null ",
+                "leaving < callDelegate > returning null",
                 logMessageService.getMessageList().get(3));
     }
 
@@ -164,16 +164,16 @@ public class LoggingAspectTest {
         assertEquals(1, logMessageService.getExceptionList().size());
 
         assertEquals(
-                " entering < callDelegateThrowsCheckedException > with args [something] ",
+                "entering < callDelegateThrowsCheckedException > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " entering < throwsCheckedException > with args [something] ",
+                "entering < throwsCheckedException > with args [something]",
                 logMessageService.getMessageList().get(1));
         assertEquals(
-                " exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException' ",
+                "exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException'",
                 logMessageService.getMessageList().get(2));
         assertEquals(
-                " exception thrown by < callDelegateThrowsCheckedException > with args [something] with message 'CheckedException' ",
+                "exception thrown by < callDelegateThrowsCheckedException > with args [something] with message 'CheckedException'",
                 logMessageService.getMessageList().get(3));
     }
 
@@ -193,16 +193,16 @@ public class LoggingAspectTest {
         assertEquals(1, logMessageService.getExceptionList().size());
 
         assertEquals(
-                " entering < callDelegateThrowsUncheckedException > with args [something] ",
+                "entering < callDelegateThrowsUncheckedException > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " entering < throwsUncheckedException > with args [something] ",
+                "entering < throwsUncheckedException > with args [something]",
                 logMessageService.getMessageList().get(1));
         assertEquals(
-                " exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException' ",
+                "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
                 logMessageService.getMessageList().get(2));
         assertEquals(
-                " exception thrown by < callDelegateThrowsUncheckedException > with args [something] with message 'UncheckedException' ",
+                "exception thrown by < callDelegateThrowsUncheckedException > with args [something] with message 'UncheckedException'",
                 logMessageService.getMessageList().get(3));
     }
 
@@ -222,16 +222,16 @@ public class LoggingAspectTest {
         assertEquals(1, logMessageService.getExceptionList().size());
 
         assertEquals(
-                " entering < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] ",
+                "entering < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something]",
                 logMessageService.getMessageList().get(0));
         assertEquals(
-                " entering < throwsUncheckedException > with args [something] ",
+                "entering < throwsUncheckedException > with args [something]",
                 logMessageService.getMessageList().get(1));
         assertEquals(
-                " exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException' ",
+                "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
                 logMessageService.getMessageList().get(2));
         assertEquals(
-                " exception thrown by < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] with message 'UncheckedException' ",
+                "exception thrown by < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] with message 'UncheckedException'",
                 logMessageService.getMessageList().get(3));
     }
 }

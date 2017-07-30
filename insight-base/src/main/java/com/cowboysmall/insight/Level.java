@@ -4,7 +4,7 @@ package com.cowboysmall.insight;
  * jerry
  */
 
-public enum LogLevel {
+public enum Level {
 
     TRACE, DEBUG, INFO, WARN, ERROR
 }

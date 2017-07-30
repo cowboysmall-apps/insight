@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Loggable {
+public @interface Traceable {
 
-    LogLevel value();
+    Level value();
 }
