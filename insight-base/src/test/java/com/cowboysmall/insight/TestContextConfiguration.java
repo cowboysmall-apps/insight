@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
  * jerry
@@ -22,10 +21,4 @@ public class TestContextConfiguration {
 
         return new MockLoggerService();
     }
-//
-//    @Bean
-//    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-//
-//        return new PropertySourcesPlaceholderConfigurer();
-//    }
 }
