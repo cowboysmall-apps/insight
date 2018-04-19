@@ -24,6 +24,6 @@ public class DemoJob {
     @Traceable(Level.INFO)
     public void execute() {
 
-        demoService.scheduled("one", 2l);
+        demoService.scheduled("one", 2L);
     }
 }

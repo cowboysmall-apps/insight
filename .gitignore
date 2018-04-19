@@ -1,6 +1,15 @@
-**/target
+target
 
+.gradle
+build
 
-**/.DS_STORE
-**/*.iml
+.idea
+*.iws
+*.iml
+*.ipr
+
+**/*.log
+**/*.zip
 **/*.versionsBackup
+
+.DS_STORE

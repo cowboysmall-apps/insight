@@ -51,7 +51,7 @@ public class ProfilingAspectTest {
     @Test
     public void testInsightProfilingAspect_BasicWithArgs() {
 
-        someOtherService.doSomethingWithArgs("first", 2l);
+        someOtherService.doSomethingWithArgs("first", 2L);
 
         assertEquals(1, insightMessageService.getMessageList().size());
         assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgs > ="));
@@ -69,7 +69,7 @@ public class ProfilingAspectTest {
     @Test
     public void testInsightProfilingAspect_BasicWithArgsAndReturn() {
 
-        someOtherService.doSomethingWithArgsAndReturn("first", 2l, 3.0);
+        someOtherService.doSomethingWithArgsAndReturn("first", 2L, 3.0);
 
         assertEquals(1, insightMessageService.getMessageList().size());
         assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgsAndReturn > ="));
