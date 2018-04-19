@@ -1,6 +1,6 @@
 package com.cowboysmall.insight.aspect;
 
-import com.cowboysmall.insight.TestContextConfiguration;
+import com.cowboysmall.insight.TestContext;
 import com.cowboysmall.insight.mock.MockLoggerService;
 import com.cowboysmall.insight.object.SomeService;
 import org.junit.Before;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestContextConfiguration.class)
+@ContextConfiguration(classes = TestContext.class)
 public class TracingAspectTest {
 
     @Autowired

@@ -1,0 +1,12 @@
+
+insight:
+  tracing:
+    truncateMessage: true
+    truncateMessageLength: 200
+    before: '[ entering < %s > with args %s ]'
+    afterThrowing: '[ exception thrown by < %s > with args %s with message %s ]'
+    afterReturning: '[ leaving < %s > returning %s ]'
+  profiling:
+    truncateMessage: true
+    truncateMessageLength: 200
+    around: '[ time taken to execute < %s > = %sms ]'

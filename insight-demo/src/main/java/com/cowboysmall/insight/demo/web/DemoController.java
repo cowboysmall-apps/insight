@@ -1,8 +1,8 @@
 package com.cowboysmall.insight.demo.web;
 
 import com.cowboysmall.insight.Level;
-import com.cowboysmall.insight.Traceable;
 import com.cowboysmall.insight.Profilable;
+import com.cowboysmall.insight.Traceable;
 import com.cowboysmall.insight.demo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

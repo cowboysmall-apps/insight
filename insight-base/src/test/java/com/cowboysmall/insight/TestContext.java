@@ -14,7 +14,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 @ComponentScan(basePackages = {"com.cowboysmall.insight"})
 @EnableAspectJAutoProxy
-public class TestContextConfiguration {
+public class TestContext {
 
     @Bean
     public LoggerService loggerService() {

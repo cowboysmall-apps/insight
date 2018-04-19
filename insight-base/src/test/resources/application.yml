@@ -1,0 +1,4 @@
+insight:
+  tracing:
+    truncateMessage: true
+    truncateMessageLength: 250

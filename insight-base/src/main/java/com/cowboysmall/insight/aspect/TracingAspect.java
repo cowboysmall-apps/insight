@@ -16,6 +16,9 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import static com.cowboysmall.insight.util.StringUtils.truncate;
+import static java.lang.String.format;
+
 /**
  * jerry
  */
@@ -30,14 +33,22 @@ public class TracingAspect {
     @Autowired
     private LoggerService loggerService;
 
-    @Value("${tracing.before:entering < %s > with args %s}")
+
+    @Value("${insight.tracing.before:entering < %s > with args %s}")
     private String beforeString;
 
-    @Value("${tracing.afterThrowing:exception thrown by < %s > with args %s with message '%s'}")
+    @Value("${insight.tracing.afterThrowing:exception thrown by < %s > with args %s with message '%s'}")
     private String afterThrowingString;
 
-    @Value("${tracing.afterReturning:leaving < %s > returning %s}")
+    @Value("${insight.tracing.afterReturning:leaving < %s > returning %s}")
     private String afterReturningString;
+
+
+    @Value("${insight.tracing.truncateMessage:false}")
+    private boolean truncateMessage;
+
+    @Value("${insight.tracing.truncateMessageLength:250}")
+    private int truncateMessageLength;
 
 
     //_________________________________________________________________________
@@ -45,14 +56,16 @@ public class TracingAspect {
     @Before(value = "@annotation(traceable)", argNames = "joinPoint, traceable")
     public void before(JoinPoint joinPoint, Traceable traceable) {
 
+        String message = format(
+                beforeString,
+                joinPoint.getSignature().getName(),
+                Arrays.toString(joinPoint.getArgs())
+        );
+
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                String.format(
-                        beforeString,
-                        joinPoint.getSignature().getName(),
-                        Arrays.toString(joinPoint.getArgs())
-                ),
+                truncateMessage ? truncate(message, truncateMessageLength) : message,
                 null
         );
     }
@@ -60,18 +73,18 @@ public class TracingAspect {
     @AfterThrowing(value = "@annotation(traceable)", throwing = "throwable", argNames = "joinPoint, traceable, throwable")
     public void afterThrowing(JoinPoint joinPoint, Traceable traceable, Throwable throwable) {
 
+        String message = format(
+                afterThrowingString,
+                joinPoint.getSignature().getName(),
+                Arrays.toString(joinPoint.getArgs()),
+                throwable.getMessage()
+        );
+
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                String.format(
-                        afterThrowingString,
-                        joinPoint.getSignature().getName(),
-                        Arrays.toString(joinPoint.getArgs()),
-                        throwable.getMessage()
-                ),
-                exceptions.contains(throwable) || exceptions.contains(throwable.getCause())
-                        ? null
-                        : throwable
+                truncateMessage ? truncate(message, truncateMessageLength) : message,
+                exceptions.contains(throwable) || exceptions.contains(throwable.getCause()) ? null : throwable
         );
 
         exceptions.add(throwable);
@@ -80,16 +93,16 @@ public class TracingAspect {
     @AfterReturning(value = "@annotation(traceable)", returning = "returnValue", argNames = "joinPoint, traceable, returnValue")
     public void afterReturning(JoinPoint joinPoint, Traceable traceable, Object returnValue) {
 
+        String message = format(
+                afterReturningString,
+                joinPoint.getSignature().getName(),
+                returnValue != null && returnValue.getClass().isArray() ? Arrays.toString((Object[]) returnValue) : returnValue
+        );
+
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                String.format(
-                        afterReturningString,
-                        joinPoint.getSignature().getName(),
-                        returnValue != null && returnValue.getClass().isArray()
-                                ? Arrays.toString((Object[]) returnValue)
-                                : returnValue
-                ),
+                truncateMessage ? truncate(message, truncateMessageLength) : message,
                 null
         );
     }
