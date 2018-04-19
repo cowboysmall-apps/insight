@@ -21,7 +21,7 @@ add a dependency for the version you want to use in your maven pom:
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.9.0</version>
+            <version>0.9.1</version>
         </dependency>
 
 ```
@@ -31,7 +31,7 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile 'com.cowboysmall.insight:insight-logback:0.9.0'
+        compile 'com.cowboysmall.insight:insight-logback:0.9.1'
 
 ```
 
@@ -44,7 +44,7 @@ then let your application know to use the aspects, and override the default prop
         @EnableAspectJAutoProxy
         public class MyApplication {
 
-            public static void main(String... args) throws Exception {
+            public static void main(String... args) {
 
                 SpringApplication.run(MyApplication.class, args);
             }
@@ -111,7 +111,7 @@ or execute the following:
 
 ```
 
-        java -jar insight-demo/target/insight-demo-0.9.0.jar
+        java -jar insight-demo/target/insight-demo-0.9.1.jar
 
 ```
 
@@ -125,7 +125,7 @@ and you will see something like the following:
          |___|_||_/__/_\__, |_||_\__| |___/\___|_|_|_\___/
                        |___/
 
-         :: Insight Demo :: Spring Boot  (v1.5.4.RELEASE)
+         :: Insight Demo :: Spring Boot  (v1.5.12.RELEASE)
 
 
         23:17:00.002 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ entering < execute > with args [] ]
