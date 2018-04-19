@@ -5,7 +5,7 @@ machine:
 
 dependencies:
   override:
-    - mvn clean package -DskipTests
+    - ./mvnw clean package -DskipTests
 
 test:
   post:
