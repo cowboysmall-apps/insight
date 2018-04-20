@@ -30,9 +30,27 @@ public class LoggerServiceTest {
 
         loggerService.getLogger(LoggerServiceImpl.class);
         assertEquals(1, loggers.size());
+    }
+
+    @Test
+    public void testLoggerService_GetLogger_Truncated() {
+
+        MockLogger logger = new MockLogger();
+
+        Map<Class<?>, Logger> loggers = new HashMap<>();
+        loggers.put(LoggerServiceImpl.class, logger);
+
+        LoggerServiceImpl loggerService = new LoggerServiceImpl();
+        ReflectionTestUtils.setField(loggerService, "loggers", loggers);
+        ReflectionTestUtils.setField(loggerService, "truncateMessage", true);
+        ReflectionTestUtils.setField(loggerService, "truncateMessageLength", 5);
 
         loggerService.getLogger(LoggerServiceImpl.class);
         assertEquals(1, loggers.size());
+
+        loggerService.log(Level.TRACE, LoggerServiceImpl.class, "123456", null);
+
+        assertEquals("12...", logger.message);
     }
 
     @Test(expected = LoggerServiceException.class)

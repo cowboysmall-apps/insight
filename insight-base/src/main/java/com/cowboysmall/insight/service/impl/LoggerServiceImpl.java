@@ -5,10 +5,13 @@ import com.cowboysmall.insight.service.LoggerService;
 import com.cowboysmall.insight.service.LoggerServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.cowboysmall.insight.util.StringUtils.truncate;
 
 /**
  * jerry
@@ -18,6 +21,13 @@ import java.util.Map;
 public class LoggerServiceImpl implements LoggerService {
 
     private Map<Class<?>, Logger> loggers = new HashMap<>();
+
+
+    @Value("${insight.logging.truncateMessage:false}")
+    private boolean truncateMessage;
+
+    @Value("${insight.logging.truncateMessageLength:250}")
+    private int truncateMessageLength;
 
 
     //_________________________________________________________________________
@@ -51,11 +61,22 @@ public class LoggerServiceImpl implements LoggerService {
             if (throwable == null)
                 logger.getClass()
                         .getMethod(level.name().toLowerCase(), String.class)
-                        .invoke(logger, message);
+                        .invoke(
+                                logger,
+                                truncateMessage
+                                        ? truncate(message, truncateMessageLength)
+                                        : message
+                        );
             else
                 logger.getClass()
                         .getMethod(level.name().toLowerCase(), String.class, Throwable.class)
-                        .invoke(logger, message, throwable);
+                        .invoke(
+                                logger,
+                                truncateMessage
+                                        ? truncate(message, truncateMessageLength)
+                                        : message,
+                                throwable
+                        );
 
         } catch (Exception e) {
 

@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
 
-import static com.cowboysmall.insight.util.StringUtils.truncate;
 import static java.lang.String.format;
 
 /**
@@ -44,13 +43,6 @@ public class TracingAspect {
     private String afterReturningString;
 
 
-    @Value("${insight.tracing.truncateMessage:false}")
-    private boolean truncateMessage;
-
-    @Value("${insight.tracing.truncateMessageLength:250}")
-    private int truncateMessageLength;
-
-
     //_________________________________________________________________________
 
     @Before(value = "@annotation(traceable)", argNames = "joinPoint, traceable")
@@ -65,7 +57,7 @@ public class TracingAspect {
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                truncateMessage ? truncate(message, truncateMessageLength) : message,
+                message,
                 null
         );
     }
@@ -83,7 +75,7 @@ public class TracingAspect {
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                truncateMessage ? truncate(message, truncateMessageLength) : message,
+                message,
                 exceptions.contains(throwable) || exceptions.contains(throwable.getCause()) ? null : throwable
         );
 
@@ -102,7 +94,7 @@ public class TracingAspect {
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                truncateMessage ? truncate(message, truncateMessageLength) : message,
+                message,
                 null
         );
     }

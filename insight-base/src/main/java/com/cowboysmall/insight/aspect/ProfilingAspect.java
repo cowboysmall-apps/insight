@@ -28,13 +28,6 @@ public class ProfilingAspect {
     private String aroundString;
 
 
-    @Value("${insight.tracing.truncateMessage:false}")
-    private boolean truncateMessage;
-
-    @Value("${insight.tracing.truncateMessageLength:250}")
-    private int truncateMessageLength;
-
-
     //_________________________________________________________________________
 
     @Around(value = "@annotation(profilable)", argNames = "proceedingJoinPoint, profilable")
@@ -55,7 +48,7 @@ public class ProfilingAspect {
             loggerService.log(
                     profilable.value(),
                     proceedingJoinPoint.getTarget().getClass(),
-                    truncateMessage ? truncate(message, truncateMessageLength) : message,
+                    message,
                     null
             );
         }
