@@ -21,7 +21,7 @@ add a dependency for the version you want to use in your maven pom:
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.9.5</version>
+            <version>0.9.6</version>
         </dependency>
 
 ```
@@ -31,7 +31,7 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile 'com.cowboysmall.insight:insight-logback:0.9.5'
+        compile 'com.cowboysmall.insight:insight-logback:0.9.6'
 
 ```
 
@@ -111,7 +111,7 @@ or execute the following:
 
 ```
 
-        java -jar insight-demo/target/insight-demo-0.9.5.jar
+        java -jar insight-demo/target/insight-demo-0.9.6.jar
 
 ```
 
