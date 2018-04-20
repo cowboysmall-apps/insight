@@ -9,6 +9,10 @@ import com.cowboysmall.insight.service.LoggerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.Math.random;
+import static java.lang.String.format;
+import static java.lang.Thread.sleep;
+
 /**
  * jerry
  */
@@ -25,10 +29,24 @@ public class DemoServiceImpl implements DemoService {
 
         try {
 
-            long sleepDuration = (long) (Math.random() * 1000);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from tracing: sleeping for %d seconds ]", sleepDuration), null);
-            Thread.sleep(sleepDuration);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from tracing: waking after %d seconds ]", sleepDuration), null);
+            long sleepDuration = (long) (random() * 1000);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from tracing: sleeping for %d milliseconds ]", sleepDuration),
+                    null
+            );
+
+            sleep(sleepDuration);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from tracing: waking after %d milliseconds ]", sleepDuration),
+                    null
+            );
+
             return "Test Tracing...";
 
         } catch (Exception e) {
@@ -43,10 +61,24 @@ public class DemoServiceImpl implements DemoService {
 
         try {
 
-            long sleepDuration = (long) (Math.random() * 1000);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from profiling: sleeping for %d seconds ]", sleepDuration), null);
-            Thread.sleep(sleepDuration);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from profiling: waking after %d seconds ]", sleepDuration), null);
+            long sleepDuration = (long) (random() * 1000);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from profiling: sleeping for %d milliseconds ]", sleepDuration),
+                    null
+            );
+
+            sleep(sleepDuration);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from profiling: waking after %d milliseconds ]", sleepDuration),
+                    null
+            );
+
             return "Test Profiling...";
 
         } catch (Exception e) {
@@ -61,10 +93,23 @@ public class DemoServiceImpl implements DemoService {
 
         try {
 
-            long sleepDuration = (long) (Math.random() * 1000);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from scheduled: sleeping for %d seconds ]", sleepDuration), null);
-            Thread.sleep(sleepDuration);
-            loggerService.log(Level.DEBUG, DemoServiceImpl.class, String.format("[ logging from scheduled: waking after %d seconds ]", sleepDuration), null);
+            long sleepDuration = (long) (random() * 1000);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from scheduled: sleeping for %d milliseconds ]", sleepDuration),
+                    null
+            );
+
+            sleep(sleepDuration);
+
+            loggerService.log(
+                    Level.DEBUG,
+                    DemoServiceImpl.class,
+                    format("[ logging from scheduled: waking after %d milliseconds ]", sleepDuration),
+                    null
+            );
 
         } catch (Exception e) {
 

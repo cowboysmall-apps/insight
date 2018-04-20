@@ -27,7 +27,7 @@ public class DemoController {
     @Traceable(Level.INFO)
     public String tracing() {
 
-        return demoService.tracing("one", 2l);
+        return demoService.tracing("one", 2L);
     }
 
     @RequestMapping("/profiling")
@@ -35,6 +35,6 @@ public class DemoController {
     @Profilable(Level.INFO)
     public String profiling() {
 
-        return demoService.profiling("one", 2l);
+        return demoService.profiling("one", 2L);
     }
 }
