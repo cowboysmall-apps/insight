@@ -32,6 +32,25 @@ public class LoggerServiceTest {
         assertEquals(1, loggers.size());
     }
 
+    @Test(expected = LoggerServiceException.class)
+    public void testLoggerService_GetLogger_ExceptionRaised() {
+
+        Map<Class<?>, Logger> loggers = new HashMap<Class<?>, Logger>() {
+
+            @Override
+            public Logger put(Class<?> key, Logger value) {
+
+                throw new RuntimeException("Exception Raised");
+            }
+        };
+
+        LoggerServiceImpl loggerService = new LoggerServiceImpl();
+        ReflectionTestUtils.setField(loggerService, "loggers", loggers);
+
+        loggerService.getLogger(LoggerServiceImpl.class);
+    }
+
+
     @Test
     public void testLoggerService_TruncatedMessage() {
 
@@ -67,24 +86,6 @@ public class LoggerServiceTest {
 
         assertEquals("12...", logger.message);
         assertEquals("Testes!", logger.throwable.getMessage());
-    }
-
-    @Test(expected = LoggerServiceException.class)
-    public void testLoggerService_GetLogger_ExceptionRaised() {
-
-        Map<Class<?>, Logger> loggers = new HashMap<Class<?>, Logger>() {
-
-            @Override
-            public Logger put(Class<?> key, Logger value) {
-
-                throw new RuntimeException("Exception Raised");
-            }
-        };
-
-        LoggerServiceImpl loggerService = new LoggerServiceImpl();
-        ReflectionTestUtils.setField(loggerService, "loggers", loggers);
-
-        loggerService.getLogger(LoggerServiceImpl.class);
     }
 
 
