@@ -1,4 +1,4 @@
 insight:
-  tracing:
+  logging:
     truncateMessage: true
-    truncateMessageLength: 250
+    truncateMessageLength: 200
