@@ -8,6 +8,12 @@ import static java.lang.String.format;
  */
 public class StringUtils {
 
+    private StringUtils() {
+    }
+
+
+    //_________________________________________________________________________
+
     public static String truncate(String string, int length) {
 
         return truncate(string, length, true);

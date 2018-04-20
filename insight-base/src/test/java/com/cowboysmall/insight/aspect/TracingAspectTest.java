@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 public class TracingAspectTest {
 
     @Autowired
-    private MockLoggerService logMessageService;
+    private MockLoggerService loggerService;
 
     @Autowired
     private SomeService someService;
@@ -32,7 +32,7 @@ public class TracingAspectTest {
     @Before
     public void setUp() {
 
-        logMessageService.clear();
+        loggerService.clear();
     }
 
 
@@ -43,14 +43,16 @@ public class TracingAspectTest {
 
         someService.doSomething("something");
 
-        assertEquals(2, logMessageService.getMessageList().size());
+        assertEquals(2, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
         assertEquals(
                 "entering < doSomething > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "leaving < doSomething > returning null",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
     }
 
     @Test
@@ -58,14 +60,16 @@ public class TracingAspectTest {
 
         someService.doSomethingAndReturn("something");
 
-        assertEquals(2, logMessageService.getMessageList().size());
+        assertEquals(2, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
         assertEquals(
                 "entering < doSomethingAndReturn > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "leaving < doSomethingAndReturn > returning SomeValue",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
     }
 
     @Test
@@ -73,14 +77,16 @@ public class TracingAspectTest {
 
         someService.doSomethingAndReturnArray("something");
 
-        assertEquals(2, logMessageService.getMessageList().size());
+        assertEquals(2, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
         assertEquals(
                 "entering < doSomethingAndReturnArray > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "leaving < doSomethingAndReturnArray > returning [SomeValue, SomeOtherValue]",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
     }
 
     @Test
@@ -95,14 +101,16 @@ public class TracingAspectTest {
             // proceed
         }
 
-        assertEquals(2, logMessageService.getMessageList().size());
+        assertEquals(2, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
         assertEquals(
                 "entering < throwsCheckedException > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException'",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
     }
 
     @Test
@@ -117,14 +125,16 @@ public class TracingAspectTest {
             // proceed
         }
 
-        assertEquals(2, logMessageService.getMessageList().size());
+        assertEquals(2, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
         assertEquals(
                 "entering < throwsUncheckedException > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
     }
 
     @Test
@@ -132,20 +142,22 @@ public class TracingAspectTest {
 
         someService.callDelegate("something");
 
-        assertEquals(4, logMessageService.getMessageList().size());
+        assertEquals(4, loggerService.getMessageList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(2, loggerService.getClasses().size());
         assertEquals(
                 "entering < callDelegate > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "entering < doSomethingElse > with args [something]",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
         assertEquals(
                 "leaving < doSomethingElse > returning null",
-                logMessageService.getMessageList().get(2));
+                loggerService.getMessageList().get(2));
         assertEquals(
                 "leaving < callDelegate > returning null",
-                logMessageService.getMessageList().get(3));
+                loggerService.getMessageList().get(3));
     }
 
     @Test
@@ -160,21 +172,23 @@ public class TracingAspectTest {
             // proceed
         }
 
-        assertEquals(4, logMessageService.getMessageList().size());
-        assertEquals(1, logMessageService.getExceptionList().size());
+        assertEquals(4, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getExceptionList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(2, loggerService.getClasses().size());
         assertEquals(
                 "entering < callDelegateThrowsCheckedException > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "entering < throwsCheckedException > with args [something]",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
         assertEquals(
                 "exception thrown by < throwsCheckedException > with args [something] with message 'CheckedException'",
-                logMessageService.getMessageList().get(2));
+                loggerService.getMessageList().get(2));
         assertEquals(
                 "exception thrown by < callDelegateThrowsCheckedException > with args [something] with message 'CheckedException'",
-                logMessageService.getMessageList().get(3));
+                loggerService.getMessageList().get(3));
     }
 
     @Test
@@ -189,21 +203,23 @@ public class TracingAspectTest {
             // proceed
         }
 
-        assertEquals(4, logMessageService.getMessageList().size());
-        assertEquals(1, logMessageService.getExceptionList().size());
+        assertEquals(4, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getExceptionList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(2, loggerService.getClasses().size());
         assertEquals(
                 "entering < callDelegateThrowsUncheckedException > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "entering < throwsUncheckedException > with args [something]",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
         assertEquals(
                 "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
-                logMessageService.getMessageList().get(2));
+                loggerService.getMessageList().get(2));
         assertEquals(
                 "exception thrown by < callDelegateThrowsUncheckedException > with args [something] with message 'UncheckedException'",
-                logMessageService.getMessageList().get(3));
+                loggerService.getMessageList().get(3));
     }
 
     @Test
@@ -218,20 +234,22 @@ public class TracingAspectTest {
             // proceed
         }
 
-        assertEquals(4, logMessageService.getMessageList().size());
-        assertEquals(1, logMessageService.getExceptionList().size());
+        assertEquals(4, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getExceptionList().size());
 
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(2, loggerService.getClasses().size());
         assertEquals(
                 "entering < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something]",
-                logMessageService.getMessageList().get(0));
+                loggerService.getMessageList().get(0));
         assertEquals(
                 "entering < throwsUncheckedException > with args [something]",
-                logMessageService.getMessageList().get(1));
+                loggerService.getMessageList().get(1));
         assertEquals(
                 "exception thrown by < throwsUncheckedException > with args [something] with message 'UncheckedException'",
-                logMessageService.getMessageList().get(2));
+                loggerService.getMessageList().get(2));
         assertEquals(
                 "exception thrown by < callDelegateThrowsUncheckedExceptionAndRethrows > with args [something] with message 'UncheckedException'",
-                logMessageService.getMessageList().get(3));
+                loggerService.getMessageList().get(3));
     }
 }

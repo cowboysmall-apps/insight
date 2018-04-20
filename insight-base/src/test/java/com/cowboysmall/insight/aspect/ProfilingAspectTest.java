@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class ProfilingAspectTest {
 
     @Autowired
-    private MockLoggerService insightMessageService;
+    private MockLoggerService loggerService;
 
     @Autowired
     private SomeOtherService someOtherService;
@@ -33,7 +33,7 @@ public class ProfilingAspectTest {
     @Before
     public void setUp() {
 
-        insightMessageService.clear();
+        loggerService.clear();
     }
 
 
@@ -44,8 +44,10 @@ public class ProfilingAspectTest {
 
         someOtherService.doSomething();
 
-        assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomething > ="));
+        assertEquals(1, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
+        assertTrue(loggerService.getMessageList().get(0).contains("time taken to execute < doSomething > ="));
     }
 
     @Test
@@ -53,8 +55,10 @@ public class ProfilingAspectTest {
 
         someOtherService.doSomethingWithArgs("first", 2L);
 
-        assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgs > ="));
+        assertEquals(1, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
+        assertTrue(loggerService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgs > ="));
     }
 
     @Test
@@ -62,8 +66,10 @@ public class ProfilingAspectTest {
 
         someOtherService.doSomethingWithReturn();
 
-        assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithReturn > ="));
+        assertEquals(1, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
+        assertTrue(loggerService.getMessageList().get(0).contains("time taken to execute < doSomethingWithReturn > ="));
     }
 
     @Test
@@ -71,7 +77,9 @@ public class ProfilingAspectTest {
 
         someOtherService.doSomethingWithArgsAndReturn("first", 2L, 3.0);
 
-        assertEquals(1, insightMessageService.getMessageList().size());
-        assertTrue(insightMessageService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgsAndReturn > ="));
+        assertEquals(1, loggerService.getMessageList().size());
+        assertEquals(1, loggerService.getLevels().size());
+        assertEquals(1, loggerService.getClasses().size());
+        assertTrue(loggerService.getMessageList().get(0).contains("time taken to execute < doSomethingWithArgsAndReturn > ="));
     }
 }
