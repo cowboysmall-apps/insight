@@ -13,7 +13,7 @@ public class StringUtils {
         return truncate(string, length, true);
     }
 
-    public static String truncate(String string, int length, boolean elipsis) {
+    public static String truncate(String string, int length, boolean ellipsis) {
 
         if (string == null)
             throw new IllegalArgumentException("string was null");
@@ -24,7 +24,7 @@ public class StringUtils {
         if (string.length() < length)
             return string;
 
-        return elipsis && length > 3
+        return ellipsis && length > 3
                 ? format("%s...", string.substring(0, length - 3))
                 : string.substring(0, length);
     }

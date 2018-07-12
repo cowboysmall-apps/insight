@@ -72,12 +72,19 @@ public class MockLoggerService implements LoggerService {
     }
 
     @Override
+    public void log(Level level, Class<?> clazz, String message) {
+
+        levels.add(level);
+        classes.add(clazz);
+        messageList.add(message);
+    }
+
+    @Override
     public void log(Level level, Class<?> clazz, String message, Throwable throwable) {
 
         levels.add(level);
         classes.add(clazz);
         messageList.add(message);
-        if (throwable != null)
-            exceptionList.add(throwable);
+        exceptionList.add(throwable);
     }
 }

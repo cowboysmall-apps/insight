@@ -11,5 +11,7 @@ public interface LoggerService {
 
     Logger getLogger(Class<?> clazz);
 
+    void log(Level level, Class<?> clazz, String message);
+
     void log(Level level, Class<?> clazz, String message, Throwable throwable);
 }

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import static com.cowboysmall.insight.util.StringUtils.truncate;
 import static java.lang.String.format;
 import static java.lang.System.currentTimeMillis;
 
@@ -43,13 +42,14 @@ public class ProfilingAspect {
 
             long end = currentTimeMillis();
 
-            String message = format(aroundString, proceedingJoinPoint.getSignature().getName(), end - start);
-
             loggerService.log(
                     profilable.value(),
                     proceedingJoinPoint.getTarget().getClass(),
-                    message,
-                    null
+                    format(
+                            aroundString,
+                            proceedingJoinPoint.getSignature().getName(),
+                            end - start
+                    )
             );
         }
     }

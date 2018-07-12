@@ -52,31 +52,44 @@ public class LoggerServiceImpl implements LoggerService {
     //_________________________________________________________________________
 
     @Override
+    public void log(Level level, Class<?> clazz, String message) {
+
+        try {
+
+            Logger logger = getLogger(clazz);
+
+            logger.getClass()
+                    .getMethod(level.name().toLowerCase(), String.class)
+                    .invoke(
+                            logger,
+                            truncateMessage
+                                    ? truncate(message, truncateMessageLength)
+                                    : message
+                    );
+
+        } catch (Exception e) {
+
+            throw new LoggerServiceException(e);
+        }
+    }
+
+    @Override
     public void log(Level level, Class<?> clazz, String message, Throwable throwable) {
 
         try {
 
             Logger logger = getLogger(clazz);
 
-            if (throwable == null)
-                logger.getClass()
-                        .getMethod(level.name().toLowerCase(), String.class)
-                        .invoke(
-                                logger,
-                                truncateMessage
-                                        ? truncate(message, truncateMessageLength)
-                                        : message
-                        );
-            else
-                logger.getClass()
-                        .getMethod(level.name().toLowerCase(), String.class, Throwable.class)
-                        .invoke(
-                                logger,
-                                truncateMessage
-                                        ? truncate(message, truncateMessageLength)
-                                        : message,
-                                throwable
-                        );
+            logger.getClass()
+                    .getMethod(level.name().toLowerCase(), String.class, Throwable.class)
+                    .invoke(
+                            logger,
+                            truncateMessage
+                                    ? truncate(message, truncateMessageLength)
+                                    : message,
+                            throwable
+                    );
+
 
         } catch (Exception e) {
 

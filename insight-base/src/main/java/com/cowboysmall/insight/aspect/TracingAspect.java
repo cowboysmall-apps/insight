@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
 
+import static com.cowboysmall.insight.util.ExceptionUtils.rootCause;
 import static java.lang.String.format;
 
 /**
@@ -26,7 +27,7 @@ import static java.lang.String.format;
 @Component
 public class TracingAspect {
 
-    private Set<Throwable> exceptions = Collections.newSetFromMap(new WeakHashMap<>());
+    private Set<Throwable> throwables = Collections.newSetFromMap(new WeakHashMap<>());
 
 
     @Autowired
@@ -48,54 +49,62 @@ public class TracingAspect {
     @Before(value = "@annotation(traceable)", argNames = "joinPoint, traceable")
     public void before(JoinPoint joinPoint, Traceable traceable) {
 
-        String message = format(
-                beforeString,
-                joinPoint.getSignature().getName(),
-                Arrays.toString(joinPoint.getArgs())
-        );
-
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                message,
-                null
+                format(
+                        beforeString,
+                        joinPoint.getSignature().getName(),
+                        Arrays.toString(joinPoint.getArgs())
+                )
         );
     }
 
     @AfterThrowing(value = "@annotation(traceable)", throwing = "throwable", argNames = "joinPoint, traceable, throwable")
     public void afterThrowing(JoinPoint joinPoint, Traceable traceable, Throwable throwable) {
 
-        String message = format(
-                afterThrowingString,
-                joinPoint.getSignature().getName(),
-                Arrays.toString(joinPoint.getArgs()),
-                throwable.getMessage()
-        );
+        Throwable rootCause = rootCause(throwable);
 
-        loggerService.log(
-                traceable.value(),
-                joinPoint.getTarget().getClass(),
-                message,
-                exceptions.contains(throwable) || exceptions.contains(throwable.getCause()) ? null : throwable
-        );
+        if (throwables.contains(rootCause))
+            loggerService.log(
+                    traceable.value(),
+                    joinPoint.getTarget().getClass(),
+                    format(
+                            afterThrowingString,
+                            joinPoint.getSignature().getName(),
+                            Arrays.toString(joinPoint.getArgs()),
+                            throwable.getMessage()
+                    )
+            );
+        else
+            loggerService.log(
+                    traceable.value(),
+                    joinPoint.getTarget().getClass(),
+                    format(
+                            afterThrowingString,
+                            joinPoint.getSignature().getName(),
+                            Arrays.toString(joinPoint.getArgs()),
+                            throwable.getMessage()
+                    ),
+                    throwable
+            );
 
-        exceptions.add(throwable);
+        throwables.add(rootCause);
     }
 
     @AfterReturning(value = "@annotation(traceable)", returning = "returnValue", argNames = "joinPoint, traceable, returnValue")
     public void afterReturning(JoinPoint joinPoint, Traceable traceable, Object returnValue) {
 
-        String message = format(
-                afterReturningString,
-                joinPoint.getSignature().getName(),
-                returnValue != null && returnValue.getClass().isArray() ? Arrays.toString((Object[]) returnValue) : returnValue
-        );
-
         loggerService.log(
                 traceable.value(),
                 joinPoint.getTarget().getClass(),
-                message,
-                null
+                format(
+                        afterReturningString,
+                        joinPoint.getSignature().getName(),
+                        returnValue != null && returnValue.getClass().isArray()
+                                ? Arrays.toString((Object[]) returnValue)
+                                : returnValue
+                )
         );
     }
 }
