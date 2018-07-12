@@ -7,7 +7,7 @@
 
     <groupId>com.cowboysmall.insight</groupId>
     <artifactId>insight</artifactId>
-    <version>0.9.6</version>
+    <version>0.9.7</version>
     <packaging>pom</packaging>
 
 
@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.12.RELEASE</version>
+        <version>1.5.14.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.9</version>
+                <version>0.8.1</version>
                 <executions>
                     <execution>
                         <goals>
