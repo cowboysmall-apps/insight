@@ -21,7 +21,7 @@ add a dependency for the version you want to use in your maven pom:
         <dependency>
             <groupId>com.cowboysmall.insight</groupId>
             <artifactId>insight-logback</artifactId>
-            <version>0.9.6</version>
+            <version>1.0.0</version>
         </dependency>
 
 ```
@@ -31,7 +31,7 @@ or include the following in your gradle build:
 
 ```groovy
 
-        compile 'com.cowboysmall.insight:insight-logback:0.9.6'
+        compile 'com.cowboysmall.insight:insight-logback:1.0.0'
 
 ```
 
@@ -111,7 +111,7 @@ or execute the following:
 
 ```
 
-        java -jar insight-demo/target/insight-demo-0.9.6.jar
+        java -jar insight-demo/target/insight-demo-1.0.0.jar
 
 ```
 
@@ -125,7 +125,7 @@ and you will see something like the following:
          |___|_||_/__/_\__, |_||_\__| |___/\___|_|_|_\___/
                        |___/
 
-         :: Insight Demo :: Spring Boot  (v1.5.12.RELEASE)
+         :: Insight Demo :: Spring Boot  (v2.1.5.RELEASE)
 
 
         23:17:00.002 [pool-1-thread-1] INFO  c.c.insight.demo.job.DemoJob - [ entering < execute > with args [] ]
@@ -163,7 +163,7 @@ This software is licensed under the MIT License (MIT) quoted below:
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Jerry Kiely
+Copyright (c) 2019 Jerry Kiely
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
