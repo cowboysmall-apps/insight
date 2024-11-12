@@ -1,8 +1,9 @@
 package com.cowboysmall.insight.util;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * jerry
@@ -61,15 +62,21 @@ public class StringUtilsTest {
         );
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testStringUtils_NullString() {
 
-        StringUtils.truncate(null, 25);
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            StringUtils.truncate(null, 25);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testStringUtils_NegativeLength() {
 
-        StringUtils.truncate("abcdefghijklmnop", -1);
+        assertThrows(IllegalArgumentException.class, () -> {
+
+            StringUtils.truncate("abcdefghijklmnop", -1);
+        });
     }
 }

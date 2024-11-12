@@ -3,15 +3,17 @@ package com.cowboysmall.insight.service;
 import com.cowboysmall.insight.Level;
 import com.cowboysmall.insight.mock.MockLogger;
 import com.cowboysmall.insight.service.impl.LoggerServiceImpl;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * jerry
@@ -32,7 +34,7 @@ public class LoggerServiceTest {
         assertEquals(1, loggers.size());
     }
 
-    @Test(expected = LoggerServiceException.class)
+    @Test
     public void testLoggerService_GetLogger_ExceptionRaised() {
 
         Map<Class<?>, Logger> loggers = new HashMap<Class<?>, Logger>() {
@@ -47,7 +49,10 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.getLogger(LoggerServiceImpl.class);
+        assertThrows(LoggerServiceException.class, () -> {
+
+            loggerService.getLogger(LoggerServiceImpl.class);
+        });
     }
 
 
@@ -269,7 +274,7 @@ public class LoggerServiceTest {
     }
 
 
-    @Test(expected = LoggerServiceException.class)
+    @Test
     public void testLoggerService_ExceptionRaised() {
 
         MockLogger logger = new MockLogger();
@@ -281,10 +286,13 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", null);
+        assertThrows(LoggerServiceException.class, () -> {
+
+            loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", null);
+        });
     }
 
-    @Test(expected = LoggerServiceException.class)
+    @Test
     public void testLoggerService_ExceptionRaised_Exception() {
 
         MockLogger logger = new MockLogger();
@@ -296,6 +304,9 @@ public class LoggerServiceTest {
         LoggerServiceImpl loggerService = new LoggerServiceImpl();
         ReflectionTestUtils.setField(loggerService, "loggers", loggers);
 
-        loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        assertThrows(LoggerServiceException.class, () -> {
+
+            loggerService.log(Level.INFO, LoggerServiceImpl.class, "Testes!", new Exception("Testes!"));
+        });
     }
 }
