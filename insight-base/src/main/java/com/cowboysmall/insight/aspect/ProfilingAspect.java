@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import static java.lang.String.format;
@@ -18,6 +19,7 @@ import static java.lang.System.currentTimeMillis;
 
 @Aspect
 @Component
+@Order(Integer.MAX_VALUE - 10)
 public class ProfilingAspect {
 
     @Autowired

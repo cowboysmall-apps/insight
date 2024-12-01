@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -25,9 +26,10 @@ import static java.lang.String.format;
 
 @Aspect
 @Component
+@Order(Integer.MAX_VALUE - 11)
 public class TracingAspect {
 
-    private Set<Throwable> throwables = Collections.newSetFromMap(new WeakHashMap<>());
+    private final Set<Throwable> throwableSet = Collections.newSetFromMap(new WeakHashMap<>());
 
 
     @Autowired
@@ -65,7 +67,7 @@ public class TracingAspect {
 
         Throwable rootCause = rootCause(throwable);
 
-        if (throwables.contains(rootCause))
+        if (throwableSet.contains(rootCause))
             loggerService.log(
                     traceable.value(),
                     joinPoint.getTarget().getClass(),
@@ -89,7 +91,7 @@ public class TracingAspect {
                     throwable
             );
 
-        throwables.add(rootCause);
+        throwableSet.add(rootCause);
     }
 
     @AfterReturning(value = "@annotation(traceable)", returning = "returnValue", argNames = "joinPoint, traceable, returnValue")

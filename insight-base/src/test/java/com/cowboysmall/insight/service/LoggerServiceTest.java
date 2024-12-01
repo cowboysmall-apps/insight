@@ -2,7 +2,6 @@ package com.cowboysmall.insight.service;
 
 import com.cowboysmall.insight.Level;
 import com.cowboysmall.insight.mock.MockLogger;
-import com.cowboysmall.insight.service.impl.LoggerServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.springframework.test.util.ReflectionTestUtils;

@@ -1,8 +1,6 @@
-package com.cowboysmall.insight.service.impl;
+package com.cowboysmall.insight.service;
 
 import com.cowboysmall.insight.Level;
-import com.cowboysmall.insight.service.LoggerService;
-import com.cowboysmall.insight.service.LoggerServiceException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
