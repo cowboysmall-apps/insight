@@ -1,15 +1,32 @@
-target
 
-.gradle
-build
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.log
+*.versionsBackup
 
 .idea
 *.iws
 *.iml
 *.ipr
+out/
 
-**/*.log
-**/*.zip
-**/*.versionsBackup
+.vscode
+
+.classpath
+.factorypath
+.project
+.settings
+
+target/
+
+.gradle
+build
+
+.env
 
 .DS_STORE
